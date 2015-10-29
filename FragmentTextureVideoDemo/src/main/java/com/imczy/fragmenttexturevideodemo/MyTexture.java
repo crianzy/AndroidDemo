@@ -1,17 +1,14 @@
 package com.imczy.fragmenttexturevideodemo;
 
-import android.app.Fragment;
+import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
+import android.util.AttributeSet;
 import android.view.Surface;
 import android.view.TextureView;
-import android.view.View;
-import android.view.ViewGroup;
 
+import com.imczy.common_util.io.IOUtil;
 import com.imczy.common_util.log.LogUtil;
 
 import java.io.File;
@@ -19,30 +16,33 @@ import java.io.File;
 /**
  * Created by chenzhiyong on 15/10/28.
  */
-public class MainFragment extends Fragment implements TextureView.SurfaceTextureListener {
-    public static final String TAG = "MainFragment";
+public class MyTexture extends TextureView implements TextureView.SurfaceTextureListener {
+    public static final String TAG = "MyTexture";
 
-
-    private MyTexture mTextureView;
-    private String mVideoPath;
-
-    // test.mp4
-    public MainFragment() {
-
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment, null);
-        mTextureView = (MyTexture) view.findViewById(R.id.texture);
-        return view;
-    }
 
     private Surface mSurface;
     private MediaPlayer mMediaPlayer;
+    private String mVideoPath;
+
+    public MyTexture(Context context) {
+        super(context);
+        init();
+    }
+
+    public MyTexture(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    public MyTexture(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    private void init() {
+        setSurfaceTextureListener(this);
+        mVideoPath = IOUtil.getBaseLocalLocation(getContext()) + File.separator + "test.mp4";
+    }
 
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
@@ -68,26 +68,15 @@ public class MainFragment extends Fragment implements TextureView.SurfaceTexture
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        if (mMediaPlayer != null) {
-            mMediaPlayer.pause();
-        }
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mMediaPlayer != null) {
-            mMediaPlayer.pause();
-        }
-    }
-
-    @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
 
     }
 
+    public void pause() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.pause();
+        }
+    }
 
     private void playVideo() {
         File file = new File(mVideoPath);
@@ -121,5 +110,4 @@ public class MainFragment extends Fragment implements TextureView.SurfaceTexture
             e.printStackTrace();
         }
     }
-
 }
