@@ -16,16 +16,11 @@ public class MyService extends Service {
 
     private IBinder mIBinder;
 
-    public MyService() {
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
         LogUtil.d(TAG, "onCreate");
-        LogUtil.d(TAG, "启动服务 do something");
     }
-
 
     @Override
     public void onStart(Intent intent, int startId) {
@@ -70,7 +65,7 @@ public class MyService extends Service {
 
     @Override
     public boolean onUnbind(Intent intent) {
-        LogUtil.d(TAG, "onBind");
+        LogUtil.d(TAG, "onUnbind");
         return super.onUnbind(intent);
     }
 }

@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mStopButton;
     private Button mBindButton;
     private Button mUnBindButton;
+    private Button mBindButton2;
+    private Button mUnBindButton2;
     Intent intent;
 
     MyService mMyService;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         mStopButton = (Button) findViewById(R.id.sto_btn);
         mBindButton = (Button) findViewById(R.id.bind_btn);
         mUnBindButton = (Button) findViewById(R.id.unbind_btn);
+        mBindButton2 = (Button) findViewById(R.id.bind_btn2);
+        mUnBindButton2 = (Button) findViewById(R.id.unbind_btn2);
         intent = new Intent(MainActivity.this, MyService.class);
 
         mStartButton.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +61,19 @@ public class MainActivity extends AppCompatActivity {
                 unbindService(mServiceConnection);
             }
         });
+
+        mBindButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bindService(intent, mServiceConnection2, Context.BIND_AUTO_CREATE);
+            }
+        });
+        mUnBindButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                unbindService(mServiceConnection2);
+            }
+        });
     }
 
     private ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -71,6 +88,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             LogUtil.d(TAG, "onServiceConnected");
+            mMyService = null;
+        }
+    };
+    private ServiceConnection mServiceConnection2 = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            LogUtil.d(TAG, "onServiceConnected2");
+            if (service != null) {
+                mMyService = ((MyService.ServiceBinder) service).getService();
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            LogUtil.d(TAG, "onServiceConnected2");
             mMyService = null;
         }
     };

@@ -1,5 +1,10 @@
-当启动 了某个service 然后 app中途崩溃了, 前提进程没所有死掉
-那么在重启移动 app是 service 会自己启动
+理论任何Service 上都可以Bind
+应为Service 必须实现onBind 方法
+
+service 不像Activity有那么多得生命周期方法,
+Service 只有两种状态 启动 和没启动
+启动时 会调用 onCreate
+死掉时, 即状态变为没启动时, 会调用 onDestory方法
 
 调用 startService 时 Service会执行
      onCreate (如果Service没有启动则会执行该方法)
@@ -8,27 +13,33 @@
 
 调用 bindService 时  Service 会执行
      onCreate(如果Service没有启动则会执行该方法)
-     onBind 方法
+     onBind 方法 (第一个客户端 bind 才会执行)
 
-在没有BindService 是 调用unBindService是, 则会抛出异常
+startService 和 bindService 的都很好理解,
+startService 只是单纯的启动Service ,可以调用多次, 如果Service 没有启动则则Service会自己启动
+bindService  只是单纯的连接Service ,一个connection只能调用一次, 即使调用多次页没反应. 如果Service没有启动则Service会自己启动
+
+接下来看stopService 看起来很简单, 停止服务,
+当没有客户端 bind连接到Service时, 调用stopService 可以停掉Service 会回调 OnDestory方法
+当有客户端bind连接到Service时, 调用stopService 不能停掉Service.
+
+但是如果执行了stopService 可以理解为, 调用startService 的人, 与Service 没有任何关系了.
+
+接下来看, unbindService 方法, 解除与Service的绑定.
+需要注意的是, 可以有多个客户端连接Service,
+只有在第一个客户端调用bindService 时, Service 才会执行 onBind方法
+只有在最后一个客户端调用unBindService时, Service 才会执行onUnbind方法
+
+当最后一个客户端调用unBindService时,
+如果 Service 与 调用startService 的人 还有关系, 那么Service不会自己停掉
+如果Service 与调用startService 的人 没有人格关系了, 或压根就没这个人, 即没有调用过startService 方法,
+那么 Service 会自己停掉,会回调 OnDestory方法
+
+在没有该客户端没有bindService 时调用unBindService是, 则会抛出异常
 java.lang.IllegalArgumentException: Service not registered
 
-正常执行 unBindService 时, Service 会执行
-     onBind 方法
+在测试过程中发现:
+当启动 了某个service 然后 app中途崩溃了, 前提进程没所有死掉
+那么在重启启动 app时 Service 会自己启动
 
-当有客户端bind连接到 Service时,
-调用stopService 时不会停到Service
-当用户调用了 stopService
- 则在所有Connection都 unBind时, 即最后调用的unBind方法时, Service会自己停掉 会执行 onDestroy
-如果用户没有调用stopService
-          则调用 unBind方法 Service 状态正常 会执行 onBind 方法
-
-如果在bind之前service 没有启动,
-     那么调用bindService 则会启动service
-     在后面调用unBindService 时,
-     如果没有调用 startService 那么
-          在执行 unBind的时候 service 会自己死掉, 会调用onDestory 方法
-
-     如果用户在unBind之前调用了 startService
-     那么在执行unBind的时候, service 不会自己死掉
-     只有在执行 stopService 是才会死掉
+上面都已写结论性质的东西下面在看看部分实现代码

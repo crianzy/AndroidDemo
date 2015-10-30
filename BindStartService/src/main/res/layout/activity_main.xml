@@ -33,5 +33,18 @@
         android:layout_height="wrap_content"
         android:text="unbind serivce"
         />
+    <Button
+        android:id="@+id/bind_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bind serivce2"
+        />
+
+    <Button
+        android:id="@+id/unbind_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="unbind serivce2"
+        />
 
 </LinearLayout>
