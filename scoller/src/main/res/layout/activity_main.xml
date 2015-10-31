@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/scroll_by_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="scroll by"
+        />
+
+    <Button
+        android:id="@+id/scroll_to_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/scroll_by_btn"
+        android:text="scroll to"
+        />
+
+    <Button
+        android:id="@+id/scroller_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/scroll_to_btn"
+        android:text="scroller"
+        />
+
+
+    <com.imczy.scoller.MyViewGroup
+        android:id="@+id/view_group"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/black"
+        >
+
+        <View
+            android:id="@+id/child_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:background="@color/red"></View>
+    </com.imczy.scoller.MyViewGroup>
+</RelativeLayout>
