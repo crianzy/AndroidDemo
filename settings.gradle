@@ -1,1 +1,1 @@
-include ':app', ':ProgressBar', ':ApkAdDemo', ':aidldemo', ':common_util'
+include ':app', ':ProgressBar', ':ApkAdDemo', ':aidldemo', ':common_util', ':FragmentTextureVideoDemo', ':OpenGLDemo', ':BindStartService', ':AnimatorDemo'

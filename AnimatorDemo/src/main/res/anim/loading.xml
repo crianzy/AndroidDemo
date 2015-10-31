@@ -1,0 +1,34 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+                android:oneshot="false">
+    <!-- android:oneshot
+        如果为false 表示重复播放
+        如果为true 表示只播放一遍
+    -->
+
+    <item
+        android:drawable="@drawable/loading_1"
+        android:duration="60"/>
+    <!-- 每一个item 表示一帧-->
+    <item
+        android:drawable="@drawable/loading_2"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/loading_3"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/loading_4"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/loading_5"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/loading_6"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/loading_7"
+        android:duration="60"/>
+    <item
+        android:drawable="@drawable/loading_8"
+        android:duration="60"/>
+
+</animation-list>
