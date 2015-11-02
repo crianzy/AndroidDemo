@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id=":xmppdemo" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="AndroidDemo" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":TouchEventClickScrollDemo" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="AndroidDemo" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
-        <option name="GRADLE_PROJECT_PATH" value=":xmppdemo" />
+        <option name="GRADLE_PROJECT_PATH" value=":TouchEventClickScrollDemo" />
       </configuration>
     </facet>
     <facet type="android" name="Android">
@@ -71,6 +71,8 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jacoco" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaResources" />
@@ -88,18 +90,9 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="smack-extensions-4.1.0-alpha6" level="project" />
-    <orderEntry type="library" exported="" name="minidns-0.1.1" level="project" />
-    <orderEntry type="library" exported="" name="smack-resolver-minidns-4.1.0-alpha6" level="project" />
-    <orderEntry type="library" exported="" name="jxmpp-util-cache-0.4.0" level="project" />
-    <orderEntry type="library" exported="" name="smack-sasl-provided-4.1.0-alpha6" level="project" />
-    <orderEntry type="library" exported="" name="jxmpp-core-0.4.0" level="project" />
-    <orderEntry type="library" exported="" name="smack-core-4.1.0-alpha6" level="project" />
-    <orderEntry type="library" exported="" name="smack-android-extensions-4.1.0-alpha6" level="project" />
-    <orderEntry type="library" exported="" name="smack-tcp-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.1.0" level="project" />
-    <orderEntry type="library" exported="" name="smack-android-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.1.0" level="project" />
+    <orderEntry type="module" module-name="common_util" exported="" />
   </component>
 </module>

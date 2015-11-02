@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zuimeia.toucheventclickscrolldemo.CustomScrollViewGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/customscrollviewgroup"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Button"/>
+
+    <View
+        android:id="@+id/scrolledView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginBottom="300dp"
+        android:background="@color/blue"
+        android:layout_below="@id/btn"
+        />
+
+</com.zuimeia.toucheventclickscrolldemo.CustomScrollViewGroup>
