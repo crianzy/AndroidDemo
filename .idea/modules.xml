@@ -9,9 +9,14 @@
       <module fileurl="file://$PROJECT_DIR$/FragmentTextureVideoDemo/FragmentTextureVideoDemo.iml" filepath="$PROJECT_DIR$/FragmentTextureVideoDemo/FragmentTextureVideoDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/OpenGLDemo/OpenGLDemo.iml" filepath="$PROJECT_DIR$/OpenGLDemo/OpenGLDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProgressBar/ProgressBar.iml" filepath="$PROJECT_DIR$/ProgressBar/ProgressBar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TouchEventDemo/TouchEventDemo.iml" filepath="$PROJECT_DIR$/TouchEventDemo/TouchEventDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/aidldemo/aidldemo.iml" filepath="$PROJECT_DIR$/aidldemo/aidldemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/common_util/common_util.iml" filepath="$PROJECT_DIR$/common_util/common_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2pDemo/p2pDemo.iml" filepath="$PROJECT_DIR$/p2pDemo/p2pDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scoller/scoller.iml" filepath="$PROJECT_DIR$/scoller/scoller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xmppdemo/xmppdemo.iml" filepath="$PROJECT_DIR$/xmppdemo/xmppdemo.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.imczy.toucheventdemo.CustomScrollViewGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.imczy.toucheventdemo.MyButtom
+        android:id="@+id/my_btn"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:background="@color/red"
+        android:text="Test Btn"
+        android:enabled="false"
+        />
+
+
+</com.imczy.toucheventdemo.CustomScrollViewGroup>
