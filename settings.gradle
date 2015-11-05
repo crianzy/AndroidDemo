@@ -1,1 +1,1 @@
-include ':app', ':ProgressBar', ':ApkAdDemo', ':aidldemo', ':common_util', ':FragmentTextureVideoDemo', ':OpenGLDemo', ':BindStartService', ':AnimatorDemo', ':p2pDemo', ':scoller', ':xmppdemo', ':TouchEventDemo', ':server', ':TouchEventClickScrollDemo'
+include ':app', ':ProgressBar', ':ApkAdDemo', ':aidldemo', ':common_util', ':FragmentTextureVideoDemo', ':OpenGLDemo', ':BindStartService', ':AnimatorDemo', ':p2pDemo', ':scoller', ':xmppdemo', ':TouchEventDemo', ':server', ':TouchEventClickScrollDemo', ':ActivityModel'

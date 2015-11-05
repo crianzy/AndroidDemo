@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ActivityModel" />
             <option value="$PROJECT_DIR$/AnimatorDemo" />
             <option value="$PROJECT_DIR$/ApkAdDemo" />
             <option value="$PROJECT_DIR$/BindStartService" />
