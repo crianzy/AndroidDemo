@@ -28,4 +28,44 @@
     <color name="transparent">#00000000</color>
     <color name="main_blue_light">#FF33B5E5</color>
     <color name="gray">#66666666</color>
+
+
+    <color name="search_hint">#b1b6c0</color>
+    <color name="comment_title">#3f454d</color>
+    <color name="common_bg">#f4f4f4</color>
+
+    <color name="setting_more">#878b90</color>
+
+    <color name="white_10_alpha">#1Affffff</color>
+    <color name="white_20_alpha">#33ffffff</color>
+    <color name="white_30_alpha">#4Dffffff</color>
+    <color name="white_40_alpha">#5Affffff</color>
+    <color name="white_45_alpha">#73ffffff</color>
+    <color name="white_50_alpha">#80ffffff</color>
+    <color name="white_55_alpha">#8Cffffff</color>
+    <color name="white_60_alpha">#99ffffff</color>
+    <color name="white_65_alpha">#A6ffffff</color>
+    <color name="white_70_alpha">#B3ffffff</color>
+    <color name="white_75_alpha">#BFffffff</color>
+    <color name="white_80_alpha">#BBffffff</color>
+    <color name="white_85_alpha">#D8ffffff</color>
+    <color name="white_90_alpha">#E6ffffff</color>
+    <color name="black_7_alpha">#12000000</color>
+    <color name="black_10_alpha">#1A000000</color>
+    <color name="black_15_alpha">#26000000</color>
+    <color name="black_20_alpha">#33000000</color>
+    <color name="black_25_alpha">#40000000</color>
+    <color name="black_30_alpha">#4D000000</color>
+    <color name="black_40_alpha">#5A000000</color>
+    <color name="black_50_alpha">#80000000</color>
+    <color name="black_60_alpha">#99000000</color>
+    <color name="black_80_alpha">#CC000000</color>
+    <color name="black_70_alpha">#B3000000</color>
+    <color name="black_title">#252525</color>
+
+    <color name="main_white">#deffffff</color>
+    <color name="minor_white">#8affffff</color>
+
+    <color name="main_black">#de000000</color>
+    <color name="minor_black">#8a000000</color>
 </resources>

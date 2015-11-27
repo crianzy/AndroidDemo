@@ -1,0 +1,52 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/item1"
+        android:title="item1"
+        >
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item2"
+                    android:icon="@drawable/icon_share_normal"
+                    android:title="share"/>
+                <item
+                    android:id="@+id/item3"
+                    android:icon="@drawable/icon_comment_normal"
+                    android:title="comment"/>
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/item4"
+        android:title="item1"
+        >
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item5"
+                    android:icon="@drawable/icon_share_normal"
+                    android:title="share"/>
+                <item
+                    android:id="@+id/item6"
+                    android:icon="@drawable/icon_comment_normal"
+                    android:title="comment"/>
+            </group>
+        </menu>
+    </item>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_item_1"
+            android:icon="@drawable/icon_share_normal"
+            android:title="share"/>
+        <item
+            android:id="@+id/navigation_item_2"
+            android:icon="@drawable/icon_comment_normal"
+            android:title="comment"/>
+    </group>
+</menu>
+
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.zuimeia.imagewidthnumview.ImageWithNumView
+        android:layout_width="10dp"
+        android:layout_height="20dp"
+        custom:textColor="@color/main_blue_light"
+        custom:textSize="24sp"/>
+</RelativeLayout>
