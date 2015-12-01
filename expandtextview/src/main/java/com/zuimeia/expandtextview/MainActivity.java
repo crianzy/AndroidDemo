@@ -73,6 +73,19 @@ public class MainActivity extends AppCompatActivity {
         isExpand = true;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     private void collapseTextView(final TextView tv, int numLines) {
         ObjectAnimator animation = ObjectAnimator.ofInt(tv, "maxLines", tv.getLineCount(), numLines);
         animation.setDuration(200).start();
