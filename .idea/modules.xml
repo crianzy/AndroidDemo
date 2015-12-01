@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ActivityModel/ActivityModel.iml" filepath="$PROJECT_DIR$/ActivityModel/ActivityModel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Android5ActivityAnimator/Android5ActivityAnimator.iml" filepath="$PROJECT_DIR$/Android5ActivityAnimator/Android5ActivityAnimator.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidDemo.iml" filepath="$PROJECT_DIR$/AndroidDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidDesign/AndroidDesign.iml" filepath="$PROJECT_DIR$/AndroidDesign/AndroidDesign.iml" />
       <module fileurl="file://$PROJECT_DIR$/AnimatorDemo/AnimatorDemo.iml" filepath="$PROJECT_DIR$/AnimatorDemo/AnimatorDemo.iml" />

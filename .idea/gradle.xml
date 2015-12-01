@@ -10,37 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/ActivityModel" />
-            <option value="$PROJECT_DIR$/AndroidDesign" />
-            <option value="$PROJECT_DIR$/AnimatorDemo" />
-            <option value="$PROJECT_DIR$/ApkAdDemo" />
-            <option value="$PROJECT_DIR$/AsynTask" />
-            <option value="$PROJECT_DIR$/BindStartService" />
-            <option value="$PROJECT_DIR$/FragmentTextureVideoDemo" />
-            <option value="$PROJECT_DIR$/IndexScrollBae" />
-            <option value="$PROJECT_DIR$/OpenGLDemo" />
-            <option value="$PROJECT_DIR$/OrientationDemo" />
-            <option value="$PROJECT_DIR$/PingStartDemo" />
-            <option value="$PROJECT_DIR$/ProgressBar" />
-            <option value="$PROJECT_DIR$/TouchEventClickScrollDemo" />
-            <option value="$PROJECT_DIR$/TouchEventDemo" />
-            <option value="$PROJECT_DIR$/ViewMeasureLayoutDrawDemo" />
-            <option value="$PROJECT_DIR$/admob" />
-            <option value="$PROJECT_DIR$/aidldemo" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/common_util" />
-            <option value="$PROJECT_DIR$/expandtextview" />
-            <option value="$PROJECT_DIR$/imagewidthnumview" />
-            <option value="$PROJECT_DIR$/p2pDemo" />
-            <option value="$PROJECT_DIR$/scoller" />
-            <option value="$PROJECT_DIR$/server" />
-            <option value="$PROJECT_DIR$/softkeyborddemo" />
-            <option value="$PROJECT_DIR$/xmppdemo" />
-          </set>
-        </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/ActivityModel" />
+            <option value="$PROJECT_DIR$/Android5ActivityAnimator" />
             <option value="$PROJECT_DIR$/AndroidDesign" />
             <option value="$PROJECT_DIR$/AnimatorDemo" />
             <option value="$PROJECT_DIR$/ApkAdDemo" />
