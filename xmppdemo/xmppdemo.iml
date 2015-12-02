@@ -89,8 +89,8 @@
     <orderEntry type="library" exported="" name="smack-tcp-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="minidns-0.1.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.1.0" level="project" />
-    <orderEntry type="library" exported="" name="smack-android-extensions-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="smack-sasl-provided-4.1.0-alpha6" level="project" />
+    <orderEntry type="library" exported="" name="smack-android-extensions-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="smack-core-4.1.0-alpha6" level="project" />
     <orderEntry type="library" exported="" name="support-v4-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="jxmpp-core-0.4.0" level="project" />

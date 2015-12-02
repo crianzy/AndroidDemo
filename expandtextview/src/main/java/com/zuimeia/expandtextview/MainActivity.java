@@ -2,21 +2,19 @@ package com.zuimeia.expandtextview;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
 
-    ExpandableTextView mExpandableTextView;
+    //    ExpandableTextView mExpandableTextView;
     TextView mTextView;
     TextView mTextView2;
+    MyExpandTextView mMyExpandTextView;
 
     String yourText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
             "Ut volutpat interdum interdum. Nulla laoreet lacus diam, vitae " +
@@ -33,15 +31,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mExpandableTextView = (ExpandableTextView) findViewById(R.id.lorem_ipsum);
-        mExpandableTextView.setText(yourText);
-
-        mExpandableTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                Log.e(TAG, "onGlobalLayout");
-            }
-        });
+//        mExpandableTextView = (ExpandableTextView) findViewById(R.id.lorem_ipsum);
+//        mExpandableTextView.setText(yourText);
+//
+//        mExpandableTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                Log.e(TAG, "onGlobalLayout");
+//            }
+//        });
         mTextView = (TextView) findViewById(R.id.txt);
         mTextView2 = (TextView) findViewById(R.id.txt2);
         mTextView.setText(yourText);
@@ -49,13 +47,20 @@ public class MainActivity extends AppCompatActivity {
         mTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isExpand) {
-                    collapseTextView(mTextView, 4);
-                } else {
-                    expandTextView(mTextView);
-                }
+                mMyExpandTextView.setText(yourText, false);
             }
         });
+
+        mTextView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMyExpandTextView.setText("hello asdasdasdasdasdasdasdasdasdasdasdasdasd");
+            }
+        });
+
+
+        mMyExpandTextView = (MyExpandTextView) findViewById(R.id.mytxt);
+        mMyExpandTextView.setText(yourText);
 
     }
 
@@ -72,19 +77,6 @@ public class MainActivity extends AppCompatActivity {
         animation.setDuration(200).start();
         isExpand = true;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private void collapseTextView(final TextView tv, int numLines) {
         ObjectAnimator animation = ObjectAnimator.ofInt(tv, "maxLines", tv.getLineCount(), numLines);

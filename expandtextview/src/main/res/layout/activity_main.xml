@@ -11,12 +11,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.zuimeia.expandtextview.ExpandableTextView
-            android:id="@+id/lorem_ipsum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            expandableTextView:maxCollapsedLines="4"/>
+        <!--<com.zuimeia.expandtextview.ExpandableTextView-->
+        <!--android:id="@+id/lorem_ipsum"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--expandableTextView:maxCollapsedLines="4"/>-->
 
 
         <TextView
@@ -24,12 +24,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:ellipsize="end"
             android:maxLines="4"/>
 
         <TextView
             android:id="@+id/txt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ellipsize="end"
             android:maxLines="4"/>
+
+
+        <com.zuimeia.expandtextview.MyExpandTextView
+            android:id="@+id/mytxt"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="asdasdasdasdasdasdasdasdas"
+            />
     </LinearLayout>
 </ScrollView>

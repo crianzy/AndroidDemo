@@ -21,7 +21,7 @@ import com.imczy.common_util.log.LogUtil;
 /**
  * Created by chenzhiyong on 15/12/1.
  */
-public class MyExpandTextView extends TextView implements View.OnClickListener {
+public class MyExpandTextView2 extends TextView implements View.OnClickListener {
     public static final String TAG = "MyExpandTextView";
     public static final int MAX_COLLAPSED_LINES = 4;
     public static final int DEFAULT_ANIM_DURATION = 300;
@@ -29,7 +29,7 @@ public class MyExpandTextView extends TextView implements View.OnClickListener {
     private Context mContext;
 
 
-    public MyExpandTextView(Context context, AttributeSet attrs) {
+    public MyExpandTextView2(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         init(attrs);
