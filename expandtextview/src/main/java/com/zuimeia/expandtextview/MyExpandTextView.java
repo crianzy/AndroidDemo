@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.imczy.common_util.log.LogUtil;
 
+import java.io.File;
+
 /**
  * Created by chenzhiyong on 15/12/1.
  */
@@ -26,33 +28,31 @@ public class MyExpandTextView extends TextView implements View.OnClickListener {
     public static final int MAX_COLLAPSED_LINES = 4;
     public static final int DEFAULT_ANIM_DURATION = 300;
 
-    private Context mContext;
-
-
     public MyExpandTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         init(attrs);
     }
 
-    String yourText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
-            "Ut volutpat interdum interdum. Nulla laoreet lacus diam, vitae " +
-            "sodales sapien commodo faucibus. Vestibulum et feugiat enim. Donec " +
-            "semper mi et euismod tempor. Sed sodales eleifend mi id varius. Nam " +
-            "et ornare enim, sit amet gravida sapien. Quisque gravida et enim vel " +
-            "volutpat. Vivamus egestas ut felis a blandit. Vivamus fringilla " +
-            "dignissim mollis. Maecenas imperdiet interdum hendrerit. Aliquam" +
-            " dictum hendrerit ultrices. Ut vitae vestibulum dolor. Donec auctor ante" +
-            " eget libero molestie porta. Nam tempor fringilla ultricies. Nam sem " +
-            "lectus, feugiat eget ullamcorper vitae, ornare et sem. Fusce dapibus ipsum";
+    private Context mContext;
 
     private int mAnimationDuration;
     private int mMaxCollapsedLines;
+
     private Drawable mExpandDrawable;
     private Drawable mCollapseDrawable;
+    private Drawable mDrawable;
 
     private int mExpandDrawablePadding;
-    private Drawable mDrawable;
+    private int mDrawableHeight;
+
+    private boolean mIsCollapsed = true;
+    private boolean isAnimating = false;
+
+    private ValueAnimator animator;
+
+    private SparseBooleanArray mCollapsedStatus;
+    private int mPosition;
 
     private void init(AttributeSet attrs) {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ExpandableTextView);
@@ -73,13 +73,15 @@ public class MyExpandTextView extends TextView implements View.OnClickListener {
         typedArray.recycle();
 
         setOnClickListener(this);
+
+        // 设置 当显示不下时 ,结尾显示  ...
         setEllipsize(TextUtils.TruncateAt.valueOf("END"));
+
+        // 设置 textView 下面的 展开收缩图片的高度
+        mDrawableHeight = mExpandDrawable.getMinimumHeight() + mExpandDrawablePadding * 2;
 
     }
 
-
-    boolean mIsCollapsed = true;
-    boolean isAnimating = false;
 
     @Override
     public void onClick(View v) {
@@ -94,32 +96,31 @@ public class MyExpandTextView extends TextView implements View.OnClickListener {
         }
     }
 
-    ValueAnimator animator;
-
     public void collapseTxt() {
-        LogUtil.d(TAG, "collapseTxt");
+        LogUtil.d(TAG, "collapseTxt  getHeight = " + getHeight());
         if (isAnimating) {
             return;
         }
-        animator = ValueAnimator.ofInt(mLineCount, mMaxCollapsedLines);
+        animator = ValueAnimator.ofInt(getHeight(), mCollapsedTextHeight);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 int value = (int) animation.getAnimatedValue();
-                setMaxLines(value);
-                requestLayout();
+                setMaxHeight(value);
             }
         });
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
+                setMaxLines(mMaxCollapsedLines);
                 isAnimating = false;
             }
 
             @Override
             public void onAnimationCancel(Animator animation) {
                 super.onAnimationCancel(animation);
+                setMaxLines(mMaxCollapsedLines);
                 isAnimating = false;
             }
         });
@@ -134,17 +135,16 @@ public class MyExpandTextView extends TextView implements View.OnClickListener {
     }
 
     public void expandTxt() {
-        LogUtil.d(TAG, "expandTxt");
+        LogUtil.d(TAG, "expandTxt  getHeight = " + getHeight());
         if (isAnimating) {
             return;
         }
-        animator = ValueAnimator.ofInt(mMaxCollapsedLines, mLineCount);
+        animator = ValueAnimator.ofInt(getHeight(), mExpandTextHeight);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 int value = (int) animation.getAnimatedValue();
-                setMaxLines(value);
-                requestLayout();
+                setMaxHeight(value);
             }
         });
         animator.addListener(new AnimatorListenerAdapter() {
@@ -187,8 +187,6 @@ public class MyExpandTextView extends TextView implements View.OnClickListener {
         setText(txt);
     }
 
-    private SparseBooleanArray mCollapsedStatus;
-    private int mPosition;
 
     public void setText(@Nullable CharSequence text, @NonNull SparseBooleanArray collapsedStatus, int position) {
         mCollapsedStatus = collapsedStatus;
@@ -218,45 +216,68 @@ public class MyExpandTextView extends TextView implements View.OnClickListener {
     boolean mHaveGetLineCount = false;
     boolean mIsNeedExpand = true;
 
+    int mExpandTextHeight;
+    int mCollapsedTextHeight;
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (!mHaveGetLineCount) {
-            mHaveGetLineCount = true;
-            mLineCount = getLineCount();
-            LogUtil.e(TAG, "onMeasure mLineCount = " + mLineCount + " , mMaxCollapsedLines = " + mMaxCollapsedLines);
-            // 获取行数  判断是否需要 显示收起 按钮
-            if (mLineCount < mMaxCollapsedLines) {
-                mIsNeedExpand = false;
-                LogUtil.d(TAG, "mLineCount < mMaxCollapsedLines");
-                post(new Runnable() {
-                    @Override
-                    public void run() {
-                        setCompoundDrawables(null, null, null, null);
-                        requestLayout();
-                    }
-                });
-                return;
-            }
-            LogUtil.d(TAG, "show  expand");
-            post(new Runnable() {
-                @Override
-                public void run() {
-                    mIsNeedExpand = true;
-                    mExpandDrawable.setBounds(0, 0, 0, mExpandDrawable.getMinimumHeight() + mExpandDrawablePadding * 2);
-                    setCompoundDrawables(null, null, null, mExpandDrawable);
-                    if (mIsCollapsed) {
-                        setMaxLines(mMaxCollapsedLines);
-                        mDrawable = mExpandDrawable;
-                    } else {
-                        setMaxLines(Integer.MAX_VALUE);
-                        mDrawable = mCollapseDrawable;
-                    }
 
-                }
-            });
+        if (mHaveGetLineCount || getVisibility() == GONE) {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+            return;
+        }
+        mHaveGetLineCount = true;
+        setMaxLines(Integer.MAX_VALUE);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        mLineCount = getLineCount();
+        // 获取展开的Textview 的文字的高度
+        mExpandTextHeight = getLayout().getLineTop(getLineCount()) + getCompoundPaddingTop() + getCompoundPaddingBottom();
+
+
+        if (getLineCount() <= mMaxCollapsedLines) {
+            mIsNeedExpand = false;
+            setCompoundDrawables(null, null, null, null);
+            return;
         }
 
+        // 获取收缩时 的文字的高度
+        mCollapsedTextHeight = getLayout().getLineTop(mMaxCollapsedLines) + getCompoundPaddingTop() + getCompoundPaddingBottom();
+        LogUtil.w(TAG, "onMeasure mLineCount = " + mLineCount
+                        + " , mExpandTextHeight = " + mExpandTextHeight
+                        + " , mCollapsedTextHeight = " + mCollapsedTextHeight
+        );
+
+        mIsNeedExpand = true;
+        mExpandTextHeight = mExpandTextHeight + mDrawableHeight;
+        mCollapsedTextHeight = mCollapsedTextHeight + mDrawableHeight;
+        LogUtil.e(TAG, "onMeasure"
+                        + " , mExpandTextHeight = " + mExpandTextHeight
+                        + " , mCollapsedTextHeight = " + mCollapsedTextHeight
+                        + " , mDrawableHeight = " + mDrawableHeight
+        );
+
+        // 这里需要通过post 放去执行, 才会去重新测量改变了View
+        mExpandDrawable.setBounds(0, 0, 0, mDrawableHeight);
+        // 这 TextView 底部的 drawable
+        setCompoundDrawables(null, null, null, mExpandDrawable);
+
+        if (mIsCollapsed) {
+            setMaxLines(mMaxCollapsedLines);
+            mDrawable = mExpandDrawable;
+        } else {
+            setMaxLines(Integer.MAX_VALUE);
+            mDrawable = mCollapseDrawable;
+        }
+
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
+
+    private static int getRealTextViewHeight(@NonNull TextView textView) {
+        int textHeight = textView.getLayout().getLineTop(textView.getLineCount());
+        int padding = textView.getCompoundPaddingTop() + textView.getCompoundPaddingBottom();
+        return textHeight + padding;
+    }
+
 
 }
