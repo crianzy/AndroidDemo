@@ -16,9 +16,11 @@
       <module fileurl="file://$PROJECT_DIR$/OrientationDemo/OrientationDemo.iml" filepath="$PROJECT_DIR$/OrientationDemo/OrientationDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/PingStartDemo/PingStartDemo.iml" filepath="$PROJECT_DIR$/PingStartDemo/PingStartDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProgressBar/ProgressBar.iml" filepath="$PROJECT_DIR$/ProgressBar/ProgressBar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StudyCanvas/StudyCanvas.iml" filepath="$PROJECT_DIR$/StudyCanvas/StudyCanvas.iml" />
       <module fileurl="file://$PROJECT_DIR$/TouchEventClickScrollDemo/TouchEventClickScrollDemo.iml" filepath="$PROJECT_DIR$/TouchEventClickScrollDemo/TouchEventClickScrollDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/TouchEventDemo/TouchEventDemo.iml" filepath="$PROJECT_DIR$/TouchEventDemo/TouchEventDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewMeasureLayoutDrawDemo/ViewMeasureLayoutDrawDemo.iml" filepath="$PROJECT_DIR$/ViewMeasureLayoutDrawDemo/ViewMeasureLayoutDrawDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ViewPagerDemo/ViewPagerDemo.iml" filepath="$PROJECT_DIR$/ViewPagerDemo/ViewPagerDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/WeixinDemo/WeixinDemo.iml" filepath="$PROJECT_DIR$/WeixinDemo/WeixinDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/admob/admob.iml" filepath="$PROJECT_DIR$/admob/admob.iml" />
       <module fileurl="file://$PROJECT_DIR$/aidldemo/aidldemo.iml" filepath="$PROJECT_DIR$/aidldemo/aidldemo.iml" />
@@ -30,6 +32,8 @@
       <module fileurl="file://$PROJECT_DIR$/scoller/scoller.iml" filepath="$PROJECT_DIR$/scoller/scoller.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/softkeyborddemo/softkeyborddemo.iml" filepath="$PROJECT_DIR$/softkeyborddemo/softkeyborddemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testxfermode/testxfermode.iml" filepath="$PROJECT_DIR$/testxfermode/testxfermode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wavedemo/wavedemo.iml" filepath="$PROJECT_DIR$/wavedemo/wavedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/xmppdemo/xmppdemo.iml" filepath="$PROJECT_DIR$/xmppdemo/xmppdemo.iml" />
     </modules>
   </component>

@@ -22,9 +22,11 @@
             <option value="$PROJECT_DIR$/OrientationDemo" />
             <option value="$PROJECT_DIR$/PingStartDemo" />
             <option value="$PROJECT_DIR$/ProgressBar" />
+            <option value="$PROJECT_DIR$/StudyCanvas" />
             <option value="$PROJECT_DIR$/TouchEventClickScrollDemo" />
             <option value="$PROJECT_DIR$/TouchEventDemo" />
             <option value="$PROJECT_DIR$/ViewMeasureLayoutDrawDemo" />
+            <option value="$PROJECT_DIR$/ViewPagerDemo" />
             <option value="$PROJECT_DIR$/WeixinDemo" />
             <option value="$PROJECT_DIR$/admob" />
             <option value="$PROJECT_DIR$/aidldemo" />
@@ -36,6 +38,8 @@
             <option value="$PROJECT_DIR$/scoller" />
             <option value="$PROJECT_DIR$/server" />
             <option value="$PROJECT_DIR$/softkeyborddemo" />
+            <option value="$PROJECT_DIR$/testxfermode" />
+            <option value="$PROJECT_DIR$/wavedemo" />
             <option value="$PROJECT_DIR$/xmppdemo" />
           </set>
         </option>
