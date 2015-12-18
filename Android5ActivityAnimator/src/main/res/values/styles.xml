@@ -6,6 +6,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- 允许使用transitions -->
+        <item name="android:windowContentTransitions">true</item>
+
+
+        <!--!&#45;&#45; specify enter and exit transitions &ndash;&gt;-->
+        <!--&lt;!&ndash; options are: explode, slide, fade &ndash;&gt;-->
+        <!--<item name="android:windowEnterTransition">@transition/change_image_transform</item>-->
+        <!--<item name="android:windowExitTransition">@transition/change_image_transform</item>-->
+
+        <!--&lt;!&ndash; specify shared element transitions &ndash;&gt;-->
+        <!--<item name="android:windowSharedElementEnterTransition">-->
+            <!--@transition/change_image_transform</item>-->
+        <!--<item name="android:windowSharedElementExitTransition">-->
+            <!--@transition/change_image_transform</item>-->
     </style>
 
 </resources>

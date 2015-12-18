@@ -2,39 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ActivityModel/ActivityModel.iml" filepath="$PROJECT_DIR$/ActivityModel/ActivityModel.iml" />
       <module fileurl="file://$PROJECT_DIR$/Android5ActivityAnimator/Android5ActivityAnimator.iml" filepath="$PROJECT_DIR$/Android5ActivityAnimator/Android5ActivityAnimator.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidDemo.iml" filepath="$PROJECT_DIR$/AndroidDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AndroidDesign/AndroidDesign.iml" filepath="$PROJECT_DIR$/AndroidDesign/AndroidDesign.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AnimatorDemo/AnimatorDemo.iml" filepath="$PROJECT_DIR$/AnimatorDemo/AnimatorDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ApkAdDemo/ApkAdDemo.iml" filepath="$PROJECT_DIR$/ApkAdDemo/ApkAdDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AsynTask/AsynTask.iml" filepath="$PROJECT_DIR$/AsynTask/AsynTask.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BindStartService/BindStartService.iml" filepath="$PROJECT_DIR$/BindStartService/BindStartService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FragmentTextureVideoDemo/FragmentTextureVideoDemo.iml" filepath="$PROJECT_DIR$/FragmentTextureVideoDemo/FragmentTextureVideoDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/IndexScrollBae/IndexScrollBae.iml" filepath="$PROJECT_DIR$/IndexScrollBae/IndexScrollBae.iml" />
-      <module fileurl="file://$PROJECT_DIR$/OpenGLDemo/OpenGLDemo.iml" filepath="$PROJECT_DIR$/OpenGLDemo/OpenGLDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/OrientationDemo/OrientationDemo.iml" filepath="$PROJECT_DIR$/OrientationDemo/OrientationDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PingStartDemo/PingStartDemo.iml" filepath="$PROJECT_DIR$/PingStartDemo/PingStartDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ProgressBar/ProgressBar.iml" filepath="$PROJECT_DIR$/ProgressBar/ProgressBar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/StudyCanvas/StudyCanvas.iml" filepath="$PROJECT_DIR$/StudyCanvas/StudyCanvas.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TouchEventClickScrollDemo/TouchEventClickScrollDemo.iml" filepath="$PROJECT_DIR$/TouchEventClickScrollDemo/TouchEventClickScrollDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TouchEventDemo/TouchEventDemo.iml" filepath="$PROJECT_DIR$/TouchEventDemo/TouchEventDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ViewMeasureLayoutDrawDemo/ViewMeasureLayoutDrawDemo.iml" filepath="$PROJECT_DIR$/ViewMeasureLayoutDrawDemo/ViewMeasureLayoutDrawDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ViewPagerDemo/ViewPagerDemo.iml" filepath="$PROJECT_DIR$/ViewPagerDemo/ViewPagerDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/WeixinDemo/WeixinDemo.iml" filepath="$PROJECT_DIR$/WeixinDemo/WeixinDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/admob/admob.iml" filepath="$PROJECT_DIR$/admob/admob.iml" />
-      <module fileurl="file://$PROJECT_DIR$/aidldemo/aidldemo.iml" filepath="$PROJECT_DIR$/aidldemo/aidldemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NestedScrolling/NestedScrolling.iml" filepath="$PROJECT_DIR$/NestedScrolling/NestedScrolling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestMemoryLeak/TestMemoryLeak.iml" filepath="$PROJECT_DIR$/TestMemoryLeak/TestMemoryLeak.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TextViewDemo/TextViewDemo.iml" filepath="$PROJECT_DIR$/TextViewDemo/TextViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/common_util/common_util.iml" filepath="$PROJECT_DIR$/common_util/common_util.iml" />
-      <module fileurl="file://$PROJECT_DIR$/expandtextview/expandtextview.iml" filepath="$PROJECT_DIR$/expandtextview/expandtextview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/imagewidthnumview/imagewidthnumview.iml" filepath="$PROJECT_DIR$/imagewidthnumview/imagewidthnumview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/p2pDemo/p2pDemo.iml" filepath="$PROJECT_DIR$/p2pDemo/p2pDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/scoller/scoller.iml" filepath="$PROJECT_DIR$/scoller/scoller.iml" />
-      <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/softkeyborddemo/softkeyborddemo.iml" filepath="$PROJECT_DIR$/softkeyborddemo/softkeyborddemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/testxfermode/testxfermode.iml" filepath="$PROJECT_DIR$/testxfermode/testxfermode.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wavedemo/wavedemo.iml" filepath="$PROJECT_DIR$/wavedemo/wavedemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xmppdemo/xmppdemo.iml" filepath="$PROJECT_DIR$/xmppdemo/xmppdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javapoet/javapoet.iml" filepath="$PROJECT_DIR$/javapoet/javapoet.iml" />
     </modules>
   </component>
 </project>

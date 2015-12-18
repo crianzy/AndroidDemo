@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--<ListView-->
+        <!--android:id="@+id/list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:cacheColorHint="@color/black"-->
+        <!--android:divider="@color/green"-->
+        <!--android:dividerHeight="10dp"-->
+        <!--android:fadingEdge="none"-->
+        <!--android:fastScrollEnabled="false"-->
+        <!--android:listSelector="@color/red"-->
+        <!--android:overScrollMode="always"-->
+        <!--android:scrollbars="none">-->
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@color/black"
+        android:divider="@color/transparent"
+        android:dividerHeight="10dp"
+        android:fadingEdge="vertical"
+        android:background="@drawable/ic_launcher"
+        android:fastScrollEnabled="false"
+        android:listSelector="@color/green"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+
+    </ListView>
+</RelativeLayout>

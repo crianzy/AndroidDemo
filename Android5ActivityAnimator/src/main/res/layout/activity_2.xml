@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/layout_root_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zuimeia.android5activityanimator.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/red_box"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/red"
+            android:transitionName="red_box"
+            />
+
+        <View
+            android:id="@+id/green_box"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:background="@color/green"
+            android:transitionName="green_box"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/blue_box"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/blue"
+            android:transitionName="blue_box"
+            />
+
+        <View
+            android:id="@+id/black_box"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:background="@color/black"
+            android:transitionName="black_box"
+            />
+    </LinearLayout>
+
+</LinearLayout>
