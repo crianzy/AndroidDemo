@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context=".MainActivity">
 
     <ProgressBar
         android:id="@+id/pb_progressbar"
@@ -15,45 +15,46 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:max="100"
-        android:progress="50"/>
+
+        />
 
     <ProgressBar
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleLargeInverse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
         android:layout_gravity="center_horizontal"/>
 
     <ProgressBar
+        android:id="@+id/progressBar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar2"
         android:layout_gravity="center_horizontal"/>
 
     <ProgressBar
+        android:id="@+id/progressBar3"
         style="?android:attr/progressBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar3"
         android:layout_gravity="center_horizontal"/>
 
     <ProgressBar
+        android:id="@+id/progressBar4"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:id="@+id/progressBar4"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:indeterminate="true"/>
 
     <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
         android:layout_gravity="center_horizontal"/>
 
     <RatingBar
+        android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

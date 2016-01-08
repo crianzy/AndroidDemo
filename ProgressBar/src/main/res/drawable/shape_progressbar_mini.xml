@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
-        <nine-patch android:src="@drawable/video_progressbar_bg"/>
+        <clip>
+            <shape>
+                <gradient
+                    android:endColor="@color/white"
+                    android:startColor="@color/white"/>
+            </shape>
+        </clip>
     </item>
     <item android:id="@android:id/secondaryProgress">
         <clip>
-            <nine-patch android:src="@drawable/video_progressbar"/>
+            <shape>
+                <gradient
+                    android:endColor="@color/colorPrimary"
+                    android:startColor="@color/colorPrimary"/>
+            </shape>
         </clip>
     </item>
     <item android:id="@android:id/progress">
         <clip>
-            <nine-patch android:src="@drawable/video_progressbar"/>
+            <shape>
+                <gradient
+                    android:endColor="@color/colorPrimary"
+                    android:startColor="@color/colorPrimary"/>
+            </shape>
         </clip>
     </item>
 </layer-list>

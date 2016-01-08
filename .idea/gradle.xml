@@ -9,12 +9,20 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ActivityModel" />
             <option value="$PROJECT_DIR$/Android5ActivityAnimator" />
+            <option value="$PROJECT_DIR$/LambdaDemo" />
+            <option value="$PROJECT_DIR$/LayoutInflaterDemo" />
             <option value="$PROJECT_DIR$/NestedScrolling" />
+            <option value="$PROJECT_DIR$/ProgressBar" />
+            <option value="$PROJECT_DIR$/PullDowmActivity" />
+            <option value="$PROJECT_DIR$/RippleDrawable" />
             <option value="$PROJECT_DIR$/TestMemoryLeak" />
             <option value="$PROJECT_DIR$/TextViewDemo" />
+            <option value="$PROJECT_DIR$/ViewPagerDemo" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common_util" />
+            <option value="$PROJECT_DIR$/fitsystemwindosdemo" />
             <option value="$PROJECT_DIR$/javapoet" />
           </set>
         </option>

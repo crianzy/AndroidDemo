@@ -27,7 +27,7 @@ public class ActivityB extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LogUtil.d(TAG, "ActivityB onCreate taskId = "+getTaskId());
+        LogUtil.d(TAG, "ActivityB onCreate taskId = " + getTaskId());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
