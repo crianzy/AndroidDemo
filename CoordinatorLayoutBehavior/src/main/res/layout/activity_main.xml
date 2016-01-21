@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent">
+    <!--toolbar-->
+    <com.czy.coordinatorlayoutbehavior.MyAppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/red"
+        >
+
+    </com.czy.coordinatorlayoutbehavior.MyAppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.czy.coordinatorlayoutbehavior.MyAppBarLayout$ScrollingViewBehavior"/>
+
+
+    <!--底部操作栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/red"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:text="添加你的评论"
+            android:textColor="@android:color/white"/>
+
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

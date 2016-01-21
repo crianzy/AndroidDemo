@@ -2,6 +2,7 @@ package com.zuimeia.android5activityanimator;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.ChangeImageTransform;
 
 public class Activity2 extends AppCompatActivity {
 

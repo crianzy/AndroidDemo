@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ActivityModel/ActivityModel.iml" filepath="$PROJECT_DIR$/ActivityModel/ActivityModel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Android5ActivityAnimator/Android5ActivityAnimator.iml" filepath="$PROJECT_DIR$/Android5ActivityAnimator/Android5ActivityAnimator.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidDemo.iml" filepath="$PROJECT_DIR$/AndroidDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/LambdaDemo/LambdaDemo.iml" filepath="$PROJECT_DIR$/LambdaDemo/LambdaDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/LayoutInflaterDemo/LayoutInflaterDemo.iml" filepath="$PROJECT_DIR$/LayoutInflaterDemo/LayoutInflaterDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/NestedScrolling/NestedScrolling.iml" filepath="$PROJECT_DIR$/NestedScrolling/NestedScrolling.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ProgressBar/ProgressBar.iml" filepath="$PROJECT_DIR$/ProgressBar/ProgressBar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PullDowmActivity/PullDowmActivity.iml" filepath="$PROJECT_DIR$/PullDowmActivity/PullDowmActivity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RippleDrawable/RippleDrawable.iml" filepath="$PROJECT_DIR$/RippleDrawable/RippleDrawable.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TestMemoryLeak/TestMemoryLeak.iml" filepath="$PROJECT_DIR$/TestMemoryLeak/TestMemoryLeak.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TextViewDemo/TextViewDemo.iml" filepath="$PROJECT_DIR$/TextViewDemo/TextViewDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ViewPagerDemo/ViewPagerDemo.iml" filepath="$PROJECT_DIR$/ViewPagerDemo/ViewPagerDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecycleSourceCode/RecycleSourceCode.iml" filepath="$PROJECT_DIR$/RecycleSourceCode/RecycleSourceCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecycleViewPagerScrollerDemo/RecycleViewPagerScrollerDemo.iml" filepath="$PROJECT_DIR$/RecycleViewPagerScrollerDemo/RecycleViewPagerScrollerDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/common_util/common_util.iml" filepath="$PROJECT_DIR$/common_util/common_util.iml" />
-      <module fileurl="file://$PROJECT_DIR$/fitsystemwindosdemo/fitsystemwindosdemo.iml" filepath="$PROJECT_DIR$/fitsystemwindosdemo/fitsystemwindosdemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/javapoet/javapoet.iml" filepath="$PROJECT_DIR$/javapoet/javapoet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javademo/javademo.iml" filepath="$PROJECT_DIR$/javademo/javademo.iml" />
     </modules>
   </component>
 </project>

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -18,9 +18,18 @@
 
         <!--&lt;!&ndash; specify shared element transitions &ndash;&gt;-->
         <!--<item name="android:windowSharedElementEnterTransition">-->
-            <!--@transition/change_image_transform</item>-->
+        <!--@transition/change_image_transform</item>-->
         <!--<item name="android:windowSharedElementExitTransition">-->
-            <!--@transition/change_image_transform</item>-->
+        <!--@transition/change_image_transform</item>-->
+
+
+        <!-- 指定共享元素的转换(效果)-->
+        <!--<item name="android:windowSharedElementEnterTransition">-->
+            <!--@transition/change_image_transform-->
+        <!--</item>-->
+        <!--<item name="android:windowSharedElementExitTransition">-->
+            <!--@transition/change_image_transform-->
+        <!--</item>-->
     </style>
 
 </resources>
