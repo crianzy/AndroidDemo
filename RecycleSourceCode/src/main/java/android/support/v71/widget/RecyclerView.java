@@ -77,9 +77,9 @@ import com.imczy.common_util.log.LogUtil;
 
 /**
  * A flexible view for providing a limited window into a large data set.
- * <p>
+ * <p/>
  * <h3>Glossary of terms:</h3>
- * <p>
+ * <p/>
  * <ul>
  * <li><em>Adapter:</em> A subclass of {@link Adapter} responsible for providing views
  * that represent items in a data set.</li>
@@ -99,15 +99,15 @@ import com.imczy.common_util.log.LogUtil;
  * <li><em>Dirty (view):</em> A child view that must be rebound by the adapter before
  * being displayed.</li>
  * </ul>
- * <p>
+ * <p/>
  * <h4>Positions in RecyclerView:</h4>
- * <p>
+ * <p/>
  * RecyclerView introduces an additional level of abstraction between the {@link Adapter} and
  * {@link LayoutManager} to be able to detect data set changes in batches during a layout
  * calculation. This saves LayoutManager from tracking adapter changes to calculate animations.
  * It also helps with performance because all view bindings happen at the same time and unnecessary
  * bindings are avoided.
- * <p>
+ * <p/>
  * For this reason, there are two types of <code>position</code> related methods in RecyclerView:
  * <ul>
  * <li>layout position: Position of an item in the latest layout calculation. This is the
@@ -115,10 +115,10 @@ import com.imczy.common_util.log.LogUtil;
  * <li>adapter position: Position of an item in the adapter. This is the position from
  * the Adapter's perspective.</li>
  * </ul>
- * <p>
+ * <p/>
  * These two positions are the same except the time between dispatching <code>adapter.notify*
  * </code> events and calculating the updated layout.
- * <p>
+ * <p/>
  * Methods that return or receive <code>*LayoutPosition*</code> use position as of the latest
  * layout calculation (e.g. {@link ViewHolder#getLayoutPosition()},
  * {@link #findViewHolderForLayoutPosition(int)}). These positions include all changes until the
@@ -126,7 +126,7 @@ import com.imczy.common_util.log.LogUtil;
  * currently seeing on the screen. For example, if you have a list of items on the screen and user
  * asks for the 5<sup>th</sup> element, you should use these methods as they'll match what user
  * is seeing.
- * <p>
+ * <p/>
  * The other set of position related methods are in the form of
  * <code>*AdapterPosition*</code>. (e.g. {@link ViewHolder#getAdapterPosition()},
  * {@link #findViewHolderForAdapterPosition(int)}) You should use these methods when you need to
@@ -136,7 +136,7 @@ import com.imczy.common_util.log.LogUtil;
  * adapter positions if {@link Adapter#notifyDataSetChanged()} has been called and new layout has
  * not yet been calculated. For this reasons, you should carefully handle {@link #NO_POSITION} or
  * <code>null</code> results from these methods.
- * <p>
+ * <p/>
  * When writing a {@link LayoutManager} you almost always want to use layout positions whereas when
  * writing an {@link Adapter}, you probably want to use adapter positions.
  *
@@ -171,7 +171,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * Constant for use with {@link #setScrollingTouchSlop(int)}. Indicates
      * that the RecyclerView should use the standard touch slop for smooth,
      * continuous scrolling.
-     * <p>
+     * <p/>
      * 默认的滑动 判断距离 for smooth 缓慢滑动
      */
     public static final int TOUCH_SLOP_DEFAULT = 0;
@@ -180,7 +180,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * Constant for use with {@link #setScrollingTouchSlop(int)}. Indicates
      * that the RecyclerView should use the standard touch slop for scrolling
      * widgets that snap to a page or other coarse-grained barrier.
-     * <p>
+     * <p/>
      * 默认的滑动 判断距离 for scrolling 突然滑动
      */
     public static final int TOUCH_SLOP_PAGING = 1;
@@ -194,7 +194,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * RecyclerView is calculating a scroll.
      * If there are too many of these in Systrace, some Views inside RecyclerView might be causing
      * it. Try to avoid using EditText, focusable views or handle them with care.
-     * <p>
+     * <p/>
      * trace 时 滑动的TAG
      */
     private static final String TRACE_SCROLL_TAG = "RV Scroll";
@@ -204,7 +204,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * If this shows up too many times in Systrace, make sure the children of RecyclerView do not
      * update themselves directly. This will cause a full re-layout but when it happens via the
      * Adapter notifyItemChanged, RecyclerView can avoid full layout calculation.
-     * <p>
+     * <p/>
      * trace 时 布局的TAG
      */
     private static final String TRACE_ON_LAYOUT_TAG = "RV OnLayout";
@@ -214,7 +214,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * If this is taking a long time, try sending granular notify adapter changes instead of just
      * calling notifyDataSetChanged or setAdapter / swapAdapter. Adding stable ids to your adapter
      * might help.
-     * <p>
+     * <p/>
      * NotifyDataSetChanged 时 的 trace tag
      */
     private static final String TRACE_ON_DATA_SET_CHANGE_LAYOUT_TAG = "RV FullInvalidate";
@@ -224,7 +224,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * If this is taking a long time, you may have dispatched too many Adapter updates causing too
      * many Views being rebind. Make sure all are necessary and also prefer using notify*Range
      * methods.
-     * <p>
+     * <p/>
      * adapter  更新时 的trace tag
      */
     private static final String TRACE_HANDLE_ADAPTER_UPDATES_TAG = "RV PartialInvalidate";
@@ -233,7 +233,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * RecyclerView is rebinding a View.
      * If this is taking a lot of time, consider optimizing your layout or make sure you are not
      * doing extra operations in onBindViewHolder call.
-     * <p>
+     * <p/>
      * bind View 的trace tag
      */
     private static final String TRACE_BIND_VIEW_TAG = "RV OnBindView";
@@ -244,13 +244,13 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * - There might be a problem in Recycling (e.g. custom Animations that set transient state and
      * prevent recycling or ItemAnimator not implementing the contract properly. ({@link
      * > Adapter#onFailedToRecycleView(ViewHolder)})
-     * <p>
+     * <p/>
      * - There might be too many item view types.
      * > Try merging them
-     * <p>
+     * <p/>
      * - There might be too many itemChange animations and not enough space in RecyclerPool.
      * >Try increasing your pool size and item cache size.
-     * <p>
+     * <p/>
      * 创建View 时 的trace TAG
      */
     private static final String TRACE_CREATE_VIEW_TAG = "RV CreateView";
@@ -278,21 +278,21 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Handles adapter updates
-     * <p>
+     * <p/>
      * adapter 的辅助类
      */
     AdapterHelper mAdapterHelper;
 
     /**
      * Handles abstraction between LayoutManager children and RecyclerView children
-     * <p>
+     * <p/>
      * 子view 的辅助类
      */
     android.support.v71.widget.ChildHelper mChildHelper;
 
     /**
      * Keeps data about views to be used for animations
-     * <p>
+     * <p/>
      * 保存 View 的相关信息 主要是动画信息
      */
     final android.support.v71.widget.ViewInfoStore mViewInfoStore = new android.support.v71.widget.ViewInfoStore();
@@ -300,7 +300,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     /**
      * Prior to L, there is no way to query this variable which is why we override the setter and
      * track it here.
-     * <p>
+     * <p/>
      * 是否可以在padding处 绘制
      */
     private boolean mClipToPadding;
@@ -310,8 +310,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * 1) We've been through first layout
      * 2) We know we have a fixed size (mHasFixedSize)
      * 3) We're attached
-     * <p>
-     * <p>
+     * <p/>
+     * <p/>
      * 尽在一下情况下 调用
      * 1. 通过了第一次布局
      * 2. 需要修改 Size
@@ -466,7 +466,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * The callback to convert view info diffs into animations.
-     * <p>
+     * <p/>
      * 回调 转化 view 的不同 动画
      */
     private final android.support.v71.widget.ViewInfoStore.ProcessCallback mViewInfoProcessCallback =
@@ -891,7 +891,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Configure the scrolling touch slop for a specific use case.
-     * <p>
+     * <p/>
      * Set up the RecyclerView's scrolling motion threshold based on common usages.
      * Valid arguments are {@link #TOUCH_SLOP_DEFAULT} and {@link #TOUCH_SLOP_PAGING}.
      *
@@ -919,7 +919,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * Swaps the current adapter with the provided one. It is similar to
      * {@link #setAdapter(Adapter)} but assumes existing adapter and the new adapter uses the same
      * {@link ViewHolder} and does not clear the RecycledViewPool.
-     * <p>
+     * <p/>
      * Note that it still calls onAdapterChanged callbacks.
      *
      * @param adapter                       The new adapter to set, or null to set no adapter.
@@ -939,11 +939,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Set a new adapter to provide child views on demand.
-     * <p>
+     * <p/>
      * When adapter is changed, all existing views are recycled back to the pool. If the pool has
      * only one adapter, it will be cleared.
      * 如果 adapter 这个对象 改变了 即 设置了新的  Adapter 那么原来的Adapter 将会 回收
-     * <p>
+     * <p/>
      * 设置 Adapter
      *
      * @param adapter The new adapter to set, or null to set no adapter.
@@ -969,7 +969,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      *                               避免刷新缓存
      * @param removeAndRecycleViews  If true, we'll remove and recycle all existing views. If
      *                               compatibleWithPrevious is false, this parameter is ignored.
-     *                               <p>
+     *                               <p/>
      *                               如果为true 那么会去掉原来存在的View
      */
     private void setAdapterInternal(Adapter adapter, boolean compatibleWithPrevious,
@@ -1114,7 +1114,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * {@link LayoutManager}. A LayoutManager must be provided for RecyclerView to function.</p>
      * <p/>
      * <p>Several default strategies are provided for common uses such as lists and grids.</p>
-     * <p>
+     * <p/>
      * 设置 LayoutManager
      *
      * @param layout LayoutManager to use
@@ -1194,7 +1194,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * purely for the purpose of being animated out of view. They are drawn as a regular
      * part of the child list of the RecyclerView, but they are invisible to the LayoutManager
      * as they are managed separately from the regular child views.
-     * <p>
+     * <p/>
      * 添加View 到动画 viewList表中  这个view 在动画结束后将会被移除
      * 这些动画的View 是咋 RecycleView 中, 不在LayoutManager 中 他们分开管理
      *
@@ -1313,8 +1313,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             return;
         }
         if (DEBUG) {
-            Log.d(TAG, "setting scroll state to " + state + " from " + mScrollState,
-                    new Exception());
+            Log.d(TAG, "setting scroll state to " + state + " from " + mScrollState);
+//            Log.d(TAG, "setting scroll state to " + state + " from " + mScrollState, new Exception());
+
         }
         mScrollState = state;
         if (state != SCROLL_STATE_SETTLING) {
@@ -1394,11 +1395,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Sets the {@link ChildDrawingOrderCallback} to be used for drawing children.
-     * <p>
+     * <p/>
      * See {@link ViewGroup#getChildDrawingOrder(int, int)} for details. Calling this method will
      * always call {@link ViewGroup#setChildrenDrawingOrderEnabled(boolean)}. The parameter will be
      * true if childDrawingOrderCallback is not null, false otherwise.
-     * <p>
+     * <p/>
      * Note that child drawing order may be overridden by View's elevation.
      *
      * @param childDrawingOrderCallback The ChildDrawingOrderCallback to be used by the drawing
@@ -1462,7 +1463,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Convenience method to scroll to a certain position.
-     * <p>
+     * <p/>
      * RecyclerView does not implement scrolling logic, rather forwards the call to
      * {@link RecyclerView.LayoutManager#scrollToPosition(int)}
      *
@@ -1493,11 +1494,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Starts a smooth scroll to an adapter position.
-     * <p>
+     * <p/>
      * To support smooth scrolling, you must override
      * {@link LayoutManager#smoothScrollToPosition(RecyclerView, State, int)} and create a
      * {@link SmoothScroller}.
-     * <p>
+     * <p/>
      * {@link LayoutManager} is responsible for creating the actual scroll action. If you want to
      * provide a custom smooth scroll logic, override
      * {@link LayoutManager#smoothScrollToPosition(RecyclerView, State, int)} in your
@@ -1543,10 +1544,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Helper method reflect data changes to the state.
-     * <p>
+     * <p/>
      * Adapter changes during a scroll may trigger a crash because scroll assumes no data change
      * but data actually changed.
-     * <p>
+     * <p/>
      * This method consumes all deferred changes to avoid that case.
      */
     private void consumePendingUpdateOperations() {
@@ -1612,7 +1613,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Does not perform bounds checking. Used by internal methods that have already validated input.
-     * <p>
+     * <p/>
      * It also reports any unused scroll request to the related EdgeEffect.
      *
      * @param x  The amount of horizontal scroll request
@@ -1841,18 +1842,18 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * {@link #smoothScrollToPosition(int)} are dropped; TouchEvents and GenericMotionEvents are
      * dropped; {@link LayoutManager#onFocusSearchFailed(View, int, Recycler, State)} will not be
      * called.
-     * <p>
-     * <p>
+     * <p/>
+     * <p/>
      * <code>setLayoutFrozen(true)</code> does not prevent app from directly calling {@link
      * LayoutManager#scrollToPosition(int)}, {@link LayoutManager#smoothScrollToPosition(
      *RecyclerView, State, int)}.
-     * <p>
+     * <p/>
      * {@link #setAdapter(Adapter)} and {@link #swapAdapter(Adapter, boolean)} will automatically
      * stop frozen.
-     * <p>
+     * <p/>
      * Note: Running ItemAnimator is not stopped automatically,  it's caller's
      * responsibility to call ItemAnimator.end().
-     * <p>
+     * <p/>
      * 设置布局冻结
      *
      * @param frozen true to freeze layout and scroll, false to re-enable.
@@ -2709,6 +2710,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     @Override
     protected void onMeasure(int widthSpec, int heightSpec) {
+        LogUtil.d(TAG, "onMeasure 开始测量 mAdapterUpdateDuringMeasure = " + mAdapterUpdateDuringMeasure);
         if (mAdapterUpdateDuringMeasure) {
             // 如果是数据改变导致的测量
             // 设置消耗布局
@@ -2737,6 +2739,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             resumeRequestLayout(false);
         }
 
+        LogUtil.d(TAG, "onMeasure mAdapter = "+mAdapter + " ,  mState.mItemCount");
         // 记录 adpater item 数量
         if (mAdapter != null) {
             mState.mItemCount = mAdapter.getItemCount();
@@ -2756,9 +2759,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Used when onMeasure is called before layout manager is set
-     * <p>
+     * <p/>
      * 默认的测量方法
-     * <p>
+     * <p/>
      * 貌似没有什么特殊的 和普通的测量View 差不多
      */
     private void defaultOnMeasure(int widthSpec, int heightSpec) {
@@ -2859,15 +2862,15 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Returns whether RecyclerView is currently computing a layout.
-     * <p>
+     * <p/>
      * If this method returns true, it means that RecyclerView is in a lockdown state and any
      * attempt to update adapter contents will result in an exception because adapter contents
      * cannot be changed while RecyclerView is trying to compute the layout.
-     * <p>
+     * <p/>
      * It is very unlikely that your code will be running during this state as it is
      * called by the framework when a layout traversal happens or RecyclerView starts to scroll
      * in response to system events (touch, accessibility etc).
-     * <p>
+     * <p/>
      * This case may happen if you have some custom logic to change adapter contents in
      * response to a View callback (e.g. focus change callback) which might be triggered during a
      * layout calculation. In these cases, you should just postpone the change using a Handler or a
@@ -2942,11 +2945,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     /**
      * Consumes adapter updates and calculates which type of animations we want to run.
      * Called in onMeasure and dispatchLayout.
-     * <p>
+     * <p/>
      * 更新Adapter 并计算 相应类型的动画 在 onMeasure dispatchLayout 调用
-     * <p>
+     * <p/>
      * This method may process only the pre-layout state of updates or all of them.
-     * <p>
+     * <p/>
      * 只能处理 布局前的更新, 或 更新所有数据
      */
     private void processAdapterUpdatesAndSetAnimationFlags() {
@@ -3234,9 +3237,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     /**
      * Records the animation information for a view holder that was bounced from hidden list. It
      * also clears the bounce back flag.
-     * <p>
+     * <p/>
      * 记录动画信息, viewHolder  是 反弹 来自隐藏 的list
-     * <p>
+     * <p/>
      * 他也会 清除 反弹的flag
      */
     private void recordAnimationInfoIfBouncedHiddenView(ViewHolder viewHolder,
@@ -3323,10 +3326,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     /**
      * Returns a unique key to be used while handling change animations.
      * It might be child's position or stable id depending on the adapter type.
-     * <p>
-     * <p>
+     * <p/>
+     * <p/>
      * 返回一个 一个 唯一的 key  用于 hadle 动画的改变
-     * <p>
+     * <p/>
      * 如果 adapter 有固定的id 那么返回 holder 的itemId  否则返回 hodler 的位置
      */
     long getChangedHolderKey(ViewHolder holder) {
@@ -3396,7 +3399,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         eatRequestLayout();
         // 开始计算 布局性能
         TraceCompat.beginSection(TRACE_ON_LAYOUT_TAG);
-        // 分发副局
+        // 分发布局
         dispatchLayout();
         TraceCompat.endSection();
         resumeRequestLayout(false);
@@ -3534,7 +3537,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Returns true if RecyclerView is currently running some animations.
-     * <p>
+     * <p/>
      * If you want to be notified when animations are finished, use
      * {@link ItemAnimator#isRunning(ItemAnimator.ItemAnimatorFinishedListener)}.
      *
@@ -3708,7 +3711,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     /**
      * Mark all known views as invalid. Used in response to a, "the whole world might have changed"
      * data change event.
-     * <p>
+     * <p/>
      * 所有的标记设置 为无效
      */
     void markKnownViewsInvalid() {
@@ -3743,7 +3746,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Retrieve the {@link ViewHolder} for the given child view.
-     * <p>
+     * <p/>
      * 获取 子View ViewHodelr
      *
      * @param child Child of this RecyclerView to query for its ViewHolder
@@ -3793,7 +3796,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Return the adapter position of the given child view as of the latest completed layout pass.
-     * <p>
+     * <p/>
      * This position may not be equal to Item's adapter position if there are pending changes
      * in the adapter which have not been reflected to the layout yet.
      *
@@ -3832,10 +3835,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     /**
      * Return the ViewHolder for the item in the given position of the data set as of the latest
      * layout pass.
-     * <p>
+     * <p/>
      * This method checks only the children of RecyclerView. If the item at the given
      * <code>position</code> is not laid out, it <em>will not</em> create a new one.
-     * <p>
+     * <p/>
      * Note that when Adapter contents change, ViewHolder positions are not updated until the
      * next layout calculation. If there are pending adapter updates, the return value of this
      * method may not match your adapter contents. You can use
@@ -3855,7 +3858,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * {@link Adapter#notifyDataSetChanged()} has been called but the new layout has not been
      * calculated yet, this method will return <code>null</code> since the new positions of views
      * are unknown until the layout is calculated.
-     * <p>
+     * <p/>
      * This method checks only the children of RecyclerView. If the item at the given
      * <code>position</code> is not laid out, it <em>will not</em> create a new one.
      *
@@ -3907,7 +3910,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * Return the ViewHolder for the item with the given id. The RecyclerView must
      * use an Adapter with {@link Adapter#setHasStableIds(boolean) stableIds} to
      * return a non-null value.
-     * <p>
+     * <p/>
      * This method checks only the children of RecyclerView. If the item with the given
      * <code>id</code> is not laid out, it <em>will not</em> create a new one.
      *
@@ -4119,11 +4122,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * Returns whether there are pending adapter updates which are not yet applied to the layout.
-     * <p>
+     * <p/>
      * If this method returns <code>true</code>, it means that what user is currently seeing may not
      * reflect them adapter contents (depending on what has changed).
      * You may use this information to defer or cancel some operations.
-     * <p>
+     * <p/>
      * This method returns true if RecyclerView has not yet calculated the first layout after it is
      * attached to the Window or the Adapter has been replaced.
      *
@@ -4476,15 +4479,18 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * RecycledViewPool lets you share Views between multiple RecyclerViews.
-     * <p>
+     * <p/>
      * If you want to recycle views across RecyclerViews, create an instance of RecycledViewPool
      * and use {@link RecyclerView#setRecycledViewPool(RecycledViewPool)}.
-     * <p>
+     * <p/>
      * RecyclerView automatically creates a pool for itself if you don't provide one.
      */
     public static class RecycledViewPool {
+        // 稀疏的集合
+        // 每个type  一个 List集合
         private SparseArray<ArrayList<ViewHolder>> mScrap =
                 new SparseArray<ArrayList<ViewHolder>>();
+        // 稀疏int 数组
         private SparseIntArray mMaxScrap = new SparseIntArray();
         private int mAttachCount = 0;
 
@@ -4504,6 +4510,12 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             }
         }
 
+        /**
+         * 获取该类型的  ViewHolder
+         *
+         * @param viewType
+         * @return
+         */
         public ViewHolder getRecycledView(int viewType) {
             final ArrayList<ViewHolder> scrapHeap = mScrap.get(viewType);
             if (scrapHeap != null && !scrapHeap.isEmpty()) {
@@ -4527,6 +4539,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         }
 
         public void putRecycledView(ViewHolder scrap) {
+            // 这里 获取type
+            // 所以说 type 一般 都是从 0 开始写 0 1 2 这些 不要乱写
             final int viewType = scrap.getItemViewType();
             final ArrayList scrapHeap = getScrapHeapForType(viewType);
             if (mMaxScrap.get(viewType) <= scrapHeap.size()) {
@@ -4535,7 +4549,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             if (DEBUG && scrapHeap.contains(scrap)) {
                 throw new IllegalArgumentException("this scrap item already exists");
             }
+            //ViewHolder 重置数据
             scrap.resetInternal();
+            // 添加到 List中
             scrapHeap.add(scrap);
         }
 
@@ -4550,7 +4566,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Detaches the old adapter and attaches the new one.
-         * <p>
+         * <p/>
          * RecycledViewPool will clear its cache if it has only one adapter attached and the new
          * adapter uses a different ViewHolder than the oldAdapter.
          *
@@ -4572,6 +4588,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             }
         }
 
+        // 获取这个 type 对应的 VIewHolder List
         private ArrayList<ViewHolder> getScrapHeapForType(int viewType) {
             ArrayList<ViewHolder> scrap = mScrap.get(viewType);
             if (scrap == null) {
@@ -4611,6 +4628,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         private RecycledViewPool mRecyclerPool;
 
+        // 一般情况下 没啥卵用
         private ViewCacheExtension mViewCacheExtension;
 
         private static final int DEFAULT_CACHE_SIZE = 2;
@@ -4648,7 +4666,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Helper method for getViewForPosition.
-         * <p>
+         * <p/>
          * Checks whether a given view holder can be used for the provided position.
          *
          * @param holder ViewHolder
@@ -4685,13 +4703,16 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * Binds the given View to the position. The View can be a View previously retrieved via
          * {@link #getViewForPosition(int)} or created by
          * {@link Adapter#onCreateViewHolder(ViewGroup, int)}.
-         * <p>
+         * <p/>
          * Generally, a LayoutManager should acquire its views via {@link #getViewForPosition(int)}
          * and let the RecyclerView handle caching. This is a helper method for LayoutManager who
          * wants to handle its own recycling logic.
-         * <p>
+         * <p/>
          * Note that, {@link #getViewForPosition(int)} already binds the View to the position so
          * you don't need to call this method unless you want to bind this View to another position.
+         * <p/>
+         * <p/>
+         * 更具View 找到 Holder  然后在去Adpater中绑定这个 Holder
          *
          * @param view     The view to update.
          * @param position The position of the item to bind to this View.
@@ -4737,15 +4758,15 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * RecyclerView provides artificial position range (item count) in pre-layout state and
          * automatically maps these positions to {@link Adapter} positions when
          * {@link #getViewForPosition(int)} or {@link #bindViewToPosition(View, int)} is called.
-         * <p>
+         * <p/>
          * Usually, LayoutManager does not need to worry about this. However, in some cases, your
          * LayoutManager may need to call some custom component with item positions in which
          * case you need the actual adapter position instead of the pre layout position. You
          * can use this method to convert a pre-layout position to adapter (post layout) position.
-         * <p>
+         * <p/>
          * Note that if the provided position belongs to a deleted ViewHolder, this method will
          * return -1.
-         * <p>
+         * <p/>
          * Calling this method in post-layout state returns the same value back.
          *
          * @param position The pre-layout position to convert. Must be greater or equal to 0 and
@@ -4764,10 +4785,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Obtain a view initialized for the given position.
-         * <p>
+         * <p/>
          * This method should be used by {@link LayoutManager} implementations to obtain
          * views to represent data from an {@link Adapter}.
-         * <p>
+         * <p/>
          * The Recycler may reuse a scrap or detached view from a shared pool if one is
          * available for the correct view type. If the adapter has not indicated that the
          * data at the given position has changed, the Recycler will attempt to hand back
@@ -4780,8 +4801,16 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             return getViewForPosition(position, false);
         }
 
+        /**
+         * 从某一个位置直接 拿到View
+         *
+         * @param position
+         * @param dryRun
+         * @return
+         */
         View getViewForPosition(int position, boolean dryRun) {
             if (position < 0 || position >= mState.getItemCount()) {
+                //位置错误
                 throw new IndexOutOfBoundsException("Invalid item position " + position
                         + "(" + position + "). Item count:" + mState.getItemCount());
             }
@@ -4789,25 +4818,32 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             ViewHolder holder = null;
             // 0) If there is a changed scrap, try to find from there
             if (mState.isPreLayout()) {
+                // 如果实在第一布局
+                // 从 mChangedScrap 列表整找到View
                 holder = getChangedScrapViewForPosition(position);
                 fromScrap = holder != null;
             }
             // 1) Find from scrap by position
             if (holder == null) {
+                // 从 mAttachedScrap 或 cachedView 列表中寻找
                 holder = getScrapViewForPosition(position, INVALID_TYPE, dryRun);
                 if (holder != null) {
                     if (!validateViewHolderForOffsetPosition(holder)) {
+                        //  验证 Holder 不通过
                         // recycle this scrap
                         if (!dryRun) {
+                            //如果移除
                             // we would like to recycle this but need to make sure it is not used by
                             // animation logic etc.
                             holder.addFlags(ViewHolder.FLAG_INVALID);
                             if (holder.isScrap()) {
+                                // 移除View
                                 removeDetachedView(holder.itemView, false);
                                 holder.unScrap();
                             } else if (holder.wasReturnedFromScrap()) {
                                 holder.clearReturnedFromScrapFlag();
                             }
+                            // 回收
                             recycleViewHolderInternal(holder);
                         }
                         holder = null;
@@ -4819,6 +4855,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             if (holder == null) {
                 final int offsetPosition = mAdapterHelper.findPositionOffset(position);
                 if (offsetPosition < 0 || offsetPosition >= mAdapter.getItemCount()) {
+                    // 位置错误
                     throw new IndexOutOfBoundsException("Inconsistency detected. Invalid item "
                             + "position " + position + "(offset:" + offsetPosition + ")."
                             + "state:" + mState.getItemCount());
@@ -4827,6 +4864,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                 final int type = mAdapter.getItemViewType(offsetPosition);
                 // 2) Find from scrap via stable ids, if exists
                 if (mAdapter.hasStableIds()) {
+                    // 更具规定id 去找
                     holder = getScrapViewForId(mAdapter.getItemId(offsetPosition), type, dryRun);
                     if (holder != null) {
                         // update position
@@ -4835,6 +4873,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                     }
                 }
                 if (holder == null && mViewCacheExtension != null) {
+                    // 还是没找到  则去或者哪里找  这里基本没用
                     // We are NOT sending the offsetPosition because LayoutManager does not
                     // know it.
                     final View view = mViewCacheExtension
@@ -4858,6 +4897,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                         Log.d(TAG, "getViewForPosition(" + position + ") fetching from shared "
                                 + "pool");
                     }
+                    // 最后还是没找到  没办法 去RecycledViewPool() 找一个 type 一样的
                     holder = getRecycledViewPool().getRecycledView(type);
                     if (holder != null) {
                         holder.resetInternal();
@@ -4867,6 +4907,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                     }
                 }
                 if (holder == null) {
+                    // 还没早都 没辙了  只能调用 adapter 重新创建
                     holder = mAdapter.createViewHolder(RecyclerView.this, type);
                     if (DEBUG) {
                         Log.d(TAG, "getViewForPosition created new ViewHolder");
@@ -4877,6 +4918,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             // This is very ugly but the only place we can grab this information
             // before the View is rebound and returned to the LayoutManager for post layout ops.
             // We don't need this in pre-layout since the VH is not updated by the LM.
+            // 如果从 attached  和 cache 列表中找到了 && 不是在第一次布局  && 且这个View 来自 看不见的那个列表
             if (fromScrap && !mState.isPreLayout() && holder
                     .hasAnyOfTheFlags(ViewHolder.FLAG_BOUNCED_FROM_HIDDEN_LIST)) {
                 holder.setFlags(0, ViewHolder.FLAG_BOUNCED_FROM_HIDDEN_LIST);
@@ -4892,6 +4934,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
             boolean bound = false;
             if (mState.isPreLayout() && holder.isBound()) {
+                // 如果在 第一次布局 不更新
                 // do not update unless we absolutely have to.
                 holder.mPreLayoutPosition = position;
             } else if (!holder.isBound() || holder.needsUpdate() || holder.isInvalid()) {
@@ -4900,7 +4943,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                             + " come here only in pre-layout. Holder: " + holder);
                 }
                 final int offsetPosition = mAdapterHelper.findPositionOffset(position);
+                // 获取新的位置
                 holder.mOwnerRecyclerView = RecyclerView.this;
+                // 绑定这个ViewHodler
                 mAdapter.bindViewHolder(holder, offsetPosition);
                 attachAccessibilityDelegate(holder.itemView);
                 bound = true;
@@ -4908,7 +4953,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                     holder.mPreLayoutPosition = position;
                 }
             }
-
+            // 检查 处理 holder.itemView 的 LayoutParams
             final ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
             final LayoutParams rvLayoutParams;
             if (lp == null) {
@@ -4945,6 +4990,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             }
         }
 
+        // 递归 让ziView 不显示
         private void invalidateDisplayListInt(ViewGroup viewGroup, boolean invalidateThis) {
             for (int i = viewGroup.getChildCount() - 1; i >= 0; i--) {
                 final View view = viewGroup.getChildAt(i);
@@ -5001,6 +5047,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             recycleViewHolderInternal(getChildViewHolderInt(view));
         }
 
+        /**
+         * 回收 cacheList 中的VIew
+         */
         void recycleAndClearCachedViews() {
             final int count = mCachedViews.size();
             for (int i = count - 1; i >= 0; i--) {
@@ -5012,11 +5061,13 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Recycles a cached view and removes the view from the list. Views are added to cache
          * if and only if they are recyclable, so this method does not check it again.
-         * <p>
+         * <p/>
          * A small exception to this rule is when the view does not have an animator reference
          * but transient state is true (due to animations created outside ItemAnimator). In that
          * case, adapter may choose to recycle it. From RecyclerView's perspective, the view is
          * still recyclable since Adapter wants to do so.
+         * <p/>
+         * 把cacheLis 中的VIew 放入 回收池中
          *
          * @param cachedViewIndex The index of the view in cached views list
          */
@@ -5036,9 +5087,12 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * internal implementation checks if view is scrapped or attached and throws an exception
          * if so.
          * Public version un-scraps before calling recycle.
+         * <p/>
+         * 回收View 的实际方法
          */
         void recycleViewHolderInternal(ViewHolder holder) {
             if (holder.isScrap() || holder.itemView.getParent() != null) {
+                // 如果已经被回收 或者说, 他还有父View
                 throw new IllegalArgumentException(
                         "Scrapped or attached views may not be recycled. isScrap:"
                                 + holder.isScrap() + " isAttached:"
@@ -5046,40 +5100,55 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             }
 
             if (holder.isTmpDetached()) {
+                //如果是 detached 的View 应该被RecycleView remo 掉 而不是  回收掉
                 throw new IllegalArgumentException("Tmp detached view should be removed "
                         + "from RecyclerView before it can be recycled: " + holder);
             }
 
             if (holder.shouldIgnore()) {
+                // 如果这个VIew  是忽略的View  那么不回收
                 throw new IllegalArgumentException("Trying to recycle an ignored view holder. You"
                         + " should first call stopIgnoringView(view) before calling recycle.");
             }
             //noinspection unchecked
-            final boolean transientStatePreventsRecycling = holder
-                    .doesTransientStatePreventRecycling();
+            // 判断是否是 过度状态  防止被回收
+            final boolean transientStatePreventsRecycling = holder.doesTransientStatePreventRecycling();
+
+            // 判断是否强制回收, 即使在中间状态
             final boolean forceRecycle = mAdapter != null
                     && transientStatePreventsRecycling
                     && mAdapter.onFailedToRecycleView(holder);
+
             boolean cached = false;
             boolean recycled = false;
             if (DEBUG && mCachedViews.contains(holder)) {
+                //  缓存的View 需要被回收? 确定
                 throw new IllegalArgumentException("cached view received recycle internal? " +
                         holder);
             }
+            // 强制回收  或 可以回收
             if (forceRecycle || holder.isRecyclable()) {
+                // 回收
                 if (!holder.hasAnyOfTheFlags(ViewHolder.FLAG_INVALID | ViewHolder.FLAG_REMOVED
                         | ViewHolder.FLAG_UPDATE)) {
+                    // 没有上述的flag
                     // Retire oldest cached view
                     final int cachedViewSize = mCachedViews.size();
                     if (cachedViewSize == mViewCacheMax && cachedViewSize > 0) {
+                        //如果缓存满了 则 移除 缓存中的第一个数据
+                        // 说明当前这个View 不会被缓存
+                        // 单数移除了 缓存的第一个位置 那么下一个VIew 可能被缓存
                         recycleCachedViewAt(0);
                     }
                     if (cachedViewSize < mViewCacheMax) {
+                        // 还有缓存的位置
+                        // 缓存
                         mCachedViews.add(holder);
                         cached = true;
                     }
                 }
                 if (!cached) {
+                    // 没有缓冲  则添加到回收池中
                     addViewHolderToRecycledViewPool(holder);
                     recycled = true;
                 }
@@ -5089,8 +5158,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             }
             // even if the holder is not removed, we still call this method so that it is removed
             // from view holder lists.
+            // 尽管这View 没有被移除,  但是我们可以在我们自己的保存的ViewHolderList中删除它
             mViewInfoStore.removeViewHolder(holder);
             if (!cached && !recycled && transientStatePreventsRecycling) {
+                // 没有被缓存  且没有被回收  且是过度状态 那么 这个VIew 的RecycleView 置为空
                 holder.mOwnerRecyclerView = null;
             }
         }
@@ -5099,6 +5170,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             ViewCompat.setAccessibilityDelegate(holder.itemView, null);
             dispatchViewRecycled(holder);
             holder.mOwnerRecyclerView = null;
+            //吧ViewHolder 加入到 回收池中
             getRecycledViewPool().putRecycledView(holder);
         }
 
@@ -5106,6 +5178,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * Used as a fast path for unscrapping and recycling a view during a bulk operation.
          * The caller must call {@link #clearScrap()} when it's done to update the recycler's
          * internal bookkeeping.
+         * <p/>
+         * 快速缓存一个View 少了一些 变量的判断
          */
         void quickRecycleScrapView(View view) {
             final ViewHolder holder = getChildViewHolderInt(view);
@@ -5121,6 +5195,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * <p>"Scrap" views are still attached to their parent RecyclerView but are eligible
          * for rebinding and reuse. Requests for a view for a given position may return a
          * reused or rebound scrap view instance.</p>
+         * 把一个attached 的View  放入 mAttachedScrap列表中
+         * 虽然这个View 是 把一个attached 但还是仍然可以重新绑定 回收什么的
          *
          * @param view View to scrap
          */
@@ -5128,7 +5204,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             final ViewHolder holder = getChildViewHolderInt(view);
             if (holder.hasAnyOfTheFlags(ViewHolder.FLAG_REMOVED | ViewHolder.FLAG_INVALID)
                     || !holder.isUpdated() || canReuseUpdatedViewHolder(holder)) {
+                //如果 有  remove 标签 和 无效标签  或 更新标签 获取 或可以被重用的
+
                 if (holder.isInvalid() && !holder.isRemoved() && !mAdapter.hasStableIds()) {
+                    // 无效的 且没有被 remove 且没有固定的id 那么他们应该在 recycler pool 回收池中 回收  不能直接重用
                     throw new IllegalArgumentException("Called scrap view with an invalid view."
                             + " Invalid views cannot be reused from scrap, they should rebound from"
                             + " recycler pool.");
@@ -5136,6 +5215,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                 holder.setScrapContainer(this, false);
                 mAttachedScrap.add(holder);
             } else {
+                // 不满足上述条件 说明这个View 很快将不能被重用把它加入到 mChangedScrap 历史表中
+                // 表示这个List 经常改变
                 if (mChangedScrap == null) {
                     mChangedScrap = new ArrayList<ViewHolder>();
                 }
@@ -5149,6 +5230,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * <p/>
          * <p>This view will no longer be eligible for reuse until re-scrapped or
          * until it is explicitly removed and recycled.</p>
+         * <p/>
+         * 把之前加入的 到 mAttachedScrap mChangedScrap 列表中 移除出去
+         * 表示说这个 View 不能直接重用
          */
         void unscrapView(ViewHolder holder) {
             if (holder.mInChangeScrap) {
@@ -5176,6 +5260,12 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             }
         }
 
+        /**
+         * 从 会经常改变的 mChangedScrap中 找出View
+         *
+         * @param position
+         * @return
+         */
         ViewHolder getChangedScrapViewForPosition(int position) {
             // If pre-layout, check the changed scrap for an exact match.
             final int changedScrapSize;
@@ -5183,6 +5273,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                 return null;
             }
             // find by position
+            // 先从布局位置开始找
             for (int i = 0; i < changedScrapSize; i++) {
                 final ViewHolder holder = mChangedScrap.get(i);
                 if (!holder.wasReturnedFromScrap() && holder.getLayoutPosition() == position) {
@@ -5191,6 +5282,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                 }
             }
             // find by id
+            // 再冲 唯一的itemId 中开始找
             if (mAdapter.hasStableIds()) {
                 final int offsetPosition = mAdapterHelper.findPositionOffset(position);
                 if (offsetPosition > 0 && offsetPosition < mAdapter.getItemCount()) {
@@ -5210,16 +5302,20 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Returns a scrap view for the position. If type is not INVALID_TYPE, it also checks if
          * ViewHolder's type matches the provided type.
+         * <p/>
+         * 更具位置  返回一个 可以重用的View
          *
          * @param position Item position
          * @param type     View type
          * @param dryRun   Does a dry run, finds the ViewHolder but does not remove
+         *                 表示要找的这个View  true 表示布衣橱
          * @return a ViewHolder that can be re-used for this position.
          */
         ViewHolder getScrapViewForPosition(int position, int type, boolean dryRun) {
             final int scrapCount = mAttachedScrap.size();
 
             // Try first for an exact, non-invalid match from scrap.
+            // 遍历 mAttachedScrap List
             for (int i = 0; i < scrapCount; i++) {
                 final ViewHolder holder = mAttachedScrap.get(i);
                 if (!holder.wasReturnedFromScrap() && holder.getLayoutPosition() == position
@@ -5230,16 +5326,21 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                                 " but expected " + type + ")");
                         break;
                     }
+
+                    // 找到了 由于是在 mAttachedScrap 也没必要移除
                     holder.addFlags(ViewHolder.FLAG_RETURNED_FROM_SCRAP);
                     return holder;
                 }
             }
 
             if (!dryRun) {
+                // 表示移除
+                // 找到 View 找到 隐藏的 看不见 的但是没有Remove的View
                 View view = mChildHelper.findHiddenNonRemovedView(position, type);
                 if (view != null) {
                     // This View is good to be used. We just need to unhide, detach and move to the
                     // scrap list.
+                    // 这个View 仍然被使用 我们只需要 detach 它 和 把它 放到 scrap list 中 mAttachedScrap 或 mChangedScrap
                     final ViewHolder vh = getChildViewHolderInt(view);
                     mChildHelper.unhide(view);
                     int layoutIndex = mChildHelper.indexOfChild(view);
@@ -5247,15 +5348,19 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                         throw new IllegalStateException("layout index should not be -1 after "
                                 + "unhiding a view:" + vh);
                     }
+                    // 移除这个View
                     mChildHelper.detachViewFromParent(layoutIndex);
                     scrapView(view);
                     vh.addFlags(ViewHolder.FLAG_RETURNED_FROM_SCRAP
                             | ViewHolder.FLAG_BOUNCED_FROM_HIDDEN_LIST);
+                    // 找到了
                     return vh;
                 }
             }
 
             // Search in our first-level recycled view cache.
+            // 在缓存的View列表中 mCachedViews  寻找
+            // 如果缓存的列表中 也没有找打 那只有返回 null了
             final int cacheSize = mCachedViews.size();
             for (int i = 0; i < cacheSize; i++) {
                 final ViewHolder holder = mCachedViews.get(i);
@@ -5263,6 +5368,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                 // retrieved via getScrapViewForId
                 if (!holder.isInvalid() && holder.getLayoutPosition() == position) {
                     if (!dryRun) {
+                        // 如果  移除 那么需要从 缓存雷彪中移除它
                         mCachedViews.remove(i);
                     }
                     if (DEBUG) {
@@ -5275,13 +5381,23 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             return null;
         }
 
+        /**
+         * 更具id 寻找 相应的ScrapView
+         *
+         * @param id
+         * @param type
+         * @param dryRun
+         * @return
+         */
         ViewHolder getScrapViewForId(long id, int type, boolean dryRun) {
             // Look in our attached views first
+            // 先从 mAttachedScrap开始找
             final int count = mAttachedScrap.size();
             for (int i = count - 1; i >= 0; i--) {
                 final ViewHolder holder = mAttachedScrap.get(i);
                 if (holder.getItemId() == id && !holder.wasReturnedFromScrap()) {
                     if (type == holder.getItemViewType()) {
+                        // 如果type相同
                         holder.addFlags(ViewHolder.FLAG_RETURNED_FROM_SCRAP);
                         if (holder.isRemoved()) {
                             // this might be valid in two cases:
@@ -5292,6 +5408,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                             // >> remove removed and invalid flags, add update flag to rebind
                             // because item was invisible to us and we don't know what happened in
                             // between.
+                            // 如果View 被移除了
+                            // 有两种情况:
+                            // 1. 如果 是在第一次布局 那么不要紧 直接返回就好
+                            // 2. 如果是在 添加到另一个位置了, 那么需要更新一下他的flag
                             if (!mState.isPreLayout()) {
                                 holder.setFlags(ViewHolder.FLAG_UPDATE, ViewHolder.FLAG_UPDATE |
                                         ViewHolder.FLAG_INVALID | ViewHolder.FLAG_REMOVED);
@@ -5299,6 +5419,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                         }
                         return holder;
                     } else if (!dryRun) {
+                        // 如果type 不同  且 移除 那么就直接回收这个View
                         // if we are running animations, it is actually better to keep it in scrap
                         // but this would force layout manager to lay it out which would be bad.
                         // Recycle this scrap. Type mismatch.
@@ -5310,16 +5431,21 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             }
 
             // Search the first-level cache
+            // 从缓存中找
             final int cacheSize = mCachedViews.size();
             for (int i = cacheSize - 1; i >= 0; i--) {
                 final ViewHolder holder = mCachedViews.get(i);
                 if (holder.getItemId() == id) {
+                    // 找到了这个Id
                     if (type == holder.getItemViewType()) {
+                        // 如果type相同
                         if (!dryRun) {
+                            // 如果 移除
                             mCachedViews.remove(i);
                         }
                         return holder;
                     } else if (!dryRun) {
+                        // 如果type 不同   且 移除它 那么就直接回收zhegView
                         recycleCachedViewAt(i);
                     }
                 }
@@ -5327,6 +5453,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             return null;
         }
 
+        /**
+         * 分发 回收 ViewHolder 的相关监听
+         *
+         * @param holder
+         */
         void dispatchViewRecycled(ViewHolder holder) {
             if (mRecyclerListener != null) {
                 mRecyclerListener.onViewRecycled(holder);
@@ -5438,6 +5569,12 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             return mRecyclerPool;
         }
 
+        /**
+         * 缓存的View 标记为更新
+         *
+         * @param positionStart
+         * @param itemCount
+         */
         void viewRangeUpdate(int positionStart, int itemCount) {
             final int positionEnd = positionStart + itemCount;
             final int cachedCount = mCachedViews.size();
@@ -5457,6 +5594,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             }
         }
 
+        /**
+         * 设置缓存的 Holder  不知道位置
+         */
         void setAdapterPositionsAsUnknown() {
             final int cachedCount = mCachedViews.size();
             for (int i = 0; i < cachedCount; i++) {
@@ -5467,6 +5607,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             }
         }
 
+        /**
+         * 标记已知的View 为不可用
+         * 这时  缓存的View 不可用
+         */
         void markKnownViewsInvalid() {
             if (mAdapter != null && mAdapter.hasStableIds()) {
                 final int cachedCount = mCachedViews.size();
@@ -5516,26 +5660,30 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     /**
      * ViewCacheExtension is a helper class to provide an additional layer of view caching that can
      * ben controlled by the developer.
-     * <p>
+     * <p/>
      * When {@link Recycler#getViewForPosition(int)} is called, Recycler checks attached scrap and
      * first level cache to find a matching View. If it cannot find a suitable View, Recycler will
      * call the {@link #getViewForPositionAndType(Recycler, int, int)} before checking
      * {@link RecycledViewPool}.
-     * <p>
+     * <p/>
      * Note that, Recycler never sends Views to this method to be cached. It is developers
      * responsibility to decide whether they want to keep their Views in this custom cache or let
      * the default recycling policy handle it.
+     * 再冲缓存 池中获取View  之前 会调用这个  方法
+     * 用户可以手动的控制  缓存View 的一诶下东西
+     * 注意这里不能创建VIew 应该返回缓存的View
+     * 但是一般情况下  没啥乱用
      */
     public abstract static class ViewCacheExtension {
 
         /**
          * Returns a View that can be binded to the given Adapter position.
-         * <p>
+         * <p/>
          * This method should <b>not</b> create a new View. Instead, it is expected to return
          * an already created View that can be re-used for the given type and position.
          * If the View is marked as ignored, it should first call
          * {@link LayoutManager#stopIgnoringView(View)} before returning the View.
-         * <p>
+         * <p/>
          * RecyclerView will re-bind the returned View to the position if necessary.
          *
          * @param recycler The Recycler that can be used to bind the View
@@ -5552,7 +5700,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * <p/>
      * <p>Adapters provide a binding from an app-specific data set to views that are displayed
      * within a {@link RecyclerView}.</p>
-     * <p>
+     * <p/>
      * 主要数据来源
      * RecycleView  主要观察 里面的数据 变动
      * 这里没有回收的逻辑
@@ -5567,11 +5715,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
          * an item.
-         * <p>
+         * <p/>
          * This new ViewHolder should be constructed with a new View that can represent the items
          * of the given type. You can either create a new View manually or inflate it from an XML
          * layout file.
-         * <p>
+         * <p/>
          * The new ViewHolder will be used to display items of the adapter using
          * {@link #onBindViewHolder(ViewHolder, int, List)}. Since it will be re-used to display
          * different items in the data set, it is a good idea to cache references to sub views of
@@ -5590,7 +5738,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * Called by RecyclerView to display the data at the specified position. This method should
          * update the contents of the {@link ViewHolder#itemView} to reflect the item at the given
          * position.
-         * <p>
+         * <p/>
          * Note that unlike {@link android.widget.ListView}, RecyclerView will not call this method
          * again if the position of the item changes in the data set unless the item itself is
          * invalidated or the new position cannot be determined. For this reason, you should only
@@ -5598,15 +5746,15 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * this method and should not keep a copy of it. If you need the position of an item later
          * on (e.g. in a click listener), use {@link ViewHolder#getAdapterPosition()} which will
          * have the updated adapter position.
-         * <p>
+         * <p/>
          * Override {@link #onBindViewHolder(ViewHolder, int, List)} instead if Adapter can
          * handle effcient partial bind.
          *
          * @param holder   The ViewHolder which should be updated to represent the contents of the
          *                 item at the given position in the data set.
          * @param position The position of the item within the adapter's data set.
-         *                 <p>
-         *                 <p>
+         *                 <p/>
+         *                 <p/>
          *                 绑定 holder 与 Item数据
          */
         public abstract void onBindViewHolder(VH holder, int position);
@@ -5615,7 +5763,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * Called by RecyclerView to display the data at the specified position. This method
          * should update the contents of the {@link ViewHolder#itemView} to reflect the item at
          * the given position.
-         * <p>
+         * <p/>
          * Note that unlike {@link android.widget.ListView}, RecyclerView will not call this method
          * again if the position of the item changes in the data set unless the item itself is
          * invalidated or the new position cannot be determined. For this reason, you should only
@@ -5623,9 +5771,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * this method and should not keep a copy of it. If you need the position of an item later
          * on (e.g. in a click listener), use {@link ViewHolder#getAdapterPosition()} which will
          * have the updated adapter position.
-         * <p>
+         * <p/>
          * Partial bind vs full bind:
-         * <p>
+         * <p/>
          * The payloads parameter is a merge list from {@link #notifyItemChanged(int, Object)} or
          * {@link #notifyItemRangeChanged(int, int, Object)}.  If the payloads list is not empty,
          * the ViewHolder is currently bound to old data and Adapter may run an efficient partial
@@ -5647,8 +5795,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * This method calls {@link #onCreateViewHolder(ViewGroup, int)} to create a new
          * {@link ViewHolder} and initializes some private fields to be used by RecyclerView.
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * 创建ViewHolder 同时将type 保存在 VIewHolder 中
          *
          * @see #onCreateViewHolder(ViewGroup, int)
@@ -5667,7 +5815,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * private fields to be used by RecyclerView.
          *
          * @see #onBindViewHolder(ViewHolder, int)
-         * <p>
+         * <p/>
          * 绑定 ViewHolder
          * 设置 ViewHolder 的flag  绑定了 更新 无效 adapter Position不确定
          */
@@ -5689,7 +5837,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Return the view type of the item at <code>position</code> for the purposes
          * of view recycling.
-         * <p>
+         * <p/>
          * <p>The default implementation of this method returns 0, making the assumption of
          * a single view type for the adapter. Unlike ListView adapters, types need not
          * be contiguous. Consider using id resources to uniquely identify item view types.
@@ -5723,12 +5871,12 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * would return false this method should return {@link #NO_ID}. The default implementation
          * of this method returns {@link #NO_ID}.
          * 返回一个固定的id for 每个Item
-         * <p>
+         * <p/>
          * 如果没有固定的id 那么返回 noId
          *
          * @param position Adapter position to query
          * @return the stable ID of the item at position
-         * <p>
+         * <p/>
          * 返回固定的id
          */
         public long getItemId(int position) {
@@ -5749,7 +5897,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * in the data set, the ID returned for that item should be the same.
          *
          * @return true if this adapter's items have stable IDs
-         * <p>
+         * <p/>
          * 多少时候为 false  经过会重写 getItemId   但是 很少调用setHasStableIds
          */
         public final boolean hasStableIds() {
@@ -5765,12 +5913,12 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * attached to the parent RecyclerView. If an item view has large or expensive data
          * bound to it such as large bitmaps, this may be a good place to release those
          * resources.</p>
-         * <p>
+         * <p/>
          * RecyclerView calls this method right before clearing ViewHolder's internal data and
          * sending it to RecycledViewPool. This way, if ViewHolder was holding valid information
          * before being recycled, you can call {@link ViewHolder#getAdapterPosition()} to get
          * its adapter position.
-         * <p>
+         * <p/>
          * 当view被回收的时候调用
          *
          * @param holder The ViewHolder for the view being recycled
@@ -5784,18 +5932,18 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * animation(s) that effect the View's transient state and return <code>true</code> so that
          * the View can be recycled. Keep in mind that the View in question is already removed from
          * the RecyclerView.
-         * <p>
+         * <p/>
          * In some cases, it is acceptable to recycle a View although it has transient state. Most
          * of the time, this is a case where the transient state will be cleared in
          * {@link #onBindViewHolder(ViewHolder, int)} call when View is rebound to a new position.
          * For this reason, RecyclerView leaves the decision to the Adapter and uses the return
          * value of this method to decide whether the View should be recycled or not.
-         * <p>
+         * <p/>
          * Note that when all animations are created by {@link RecyclerView.ItemAnimator}, you
          * should never receive this callback because RecyclerView keeps those Views as children
          * until their animations are complete. This callback is useful when children of the item
          * views create animations which may not be easy to implement using an {@link ItemAnimator}.
-         * <p>
+         * <p/>
          * You should <em>never</em> fix this issue by calling
          * <code>holder.itemView.setHasTransientState(false);</code> unless you've previously called
          * <code>holder.itemView.setHasTransientState(true);</code>. Each
@@ -5811,10 +5959,12 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * the View and recycle it regardless. If this method returns <code>false</code>,
          * RecyclerView will check the View's transient state again before giving a final decision.
          * Default implementation returns false.
-         * <p>
+         * <p/>
          * 回收失败的时候回调
          * 如果返回true 那个这个View 应该被回收 RecyclerView 会忽略中间状态(transient state) 直接回收
          * 返回false 则再次检测 transient state
+         * <p/>
+         * 如果返回true 表示说 要强制回收
          */
         public boolean onFailedToRecycleView(VH holder) {
             return false;
@@ -5827,7 +5977,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * by the user. If the adapter previously freed any resources in
          * {@link #onViewDetachedFromWindow(RecyclerView.ViewHolder) onViewDetachedFromWindow}
          * those resources should be restored here.</p>
-         * <p>
+         * <p/>
          * 当 一个View 被创建 且添加到 WIndow上了
          *
          * @param holder Holder of the view being attached
@@ -5870,7 +6020,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          *
          * @param observer Observer to register
          * @see #unregisterAdapterDataObserver(RecyclerView.AdapterDataObserver)
-         * <p>
+         * <p/>
          * 注册数据观察者
          */
         public void registerAdapterDataObserver(AdapterDataObserver observer) {
@@ -5885,7 +6035,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          *
          * @param observer Observer to unregister
          * @see #registerAdapterDataObserver(RecyclerView.AdapterDataObserver)
-         * <p>
+         * <p/>
          * 解注册 数据观察嘎子
          */
         public void unregisterAdapterDataObserver(AdapterDataObserver observer) {
@@ -5894,12 +6044,12 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Called by RecyclerView when it starts observing this Adapter.
-         * <p>
+         * <p/>
          * Keep in mind that same adapter may be observed by multiple RecyclerViews.
          *
          * @param recyclerView The RecyclerView instance which started observing this adapter.
          * @see #onDetachedFromRecyclerView(RecyclerView)
-         * <p>
+         * <p/>
          * 添加到 RecycleVIew中 开始观察 adapter了
          * 相同的 Adapter 可能被 添加到 多个RecycleVIew 中
          */
@@ -5911,7 +6061,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          *
          * @param recyclerView The RecyclerView instance which stopped observing this adapter.
          * @see #onAttachedToRecyclerView(RecyclerView)
-         * <p>
+         * <p/>
          * 从RecycleView 中移除了
          */
         public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
@@ -5945,7 +6095,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * @see #notifyItemRangeChanged(int, int)
          * @see #notifyItemRangeInserted(int, int)
          * @see #notifyItemRangeRemoved(int, int)
-         * <p>
+         * <p/>
          * 通知所有数据改变
          */
         public final void notifyDataSetChanged() {
@@ -5959,7 +6109,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * <p>This is an item change event, not a structural change event. It indicates that any
          * reflection of the data at <code>position</code> is out of date and should be updated.
          * The item at <code>position</code> retains the same identity.</p>
-         * <p>
+         * <p/>
          * 通知某个位置改变
          *
          * @param position Position of the item that has changed
@@ -5977,8 +6127,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * reflection of the data at <code>position</code> is out of date and should be updated.
          * The item at <code>position</code> retains the same identity.
          * </p>
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * Client can optionally pass a payload for partial change. These payloads will be merged
          * and may be passed to adapter's {@link #onBindViewHolder(ViewHolder, int, List)} if the
          * item is already represented by a ViewHolder and it will be rebound to the same
@@ -6008,7 +6158,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * @param positionStart Position of the first item that has changed
          * @param itemCount     Number of items that have changed
          * @see #notifyItemChanged(int)
-         * <p>
+         * <p/>
          * 通知这个位置 后面的一系列 数据改变
          */
         public final void notifyItemRangeChanged(int positionStart, int itemCount) {
@@ -6024,8 +6174,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * reflection of the data in the given position range is out of date and should be updated.
          * The items in the given range retain the same identity.
          * </p>
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * Client can optionally pass a payload for partial change. These payloads will be merged
          * and may be passed to adapter's {@link #onBindViewHolder(ViewHolder, int, List)} if the
          * item is already represented by a ViewHolder and it will be rebound to the same
@@ -6055,7 +6205,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          *
          * @param position Position of the newly inserted item in the data set
          * @see #notifyItemRangeInserted(int, int)
-         * <p>
+         * <p/>
          * 通知数据插入
          */
         public final void notifyItemInserted(int position) {
@@ -6072,7 +6222,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          *
          * @param fromPosition Previous position of the item.
          * @param toPosition   New position of the item.
-         *                     <p>
+         *                     <p/>
          *                     通知Item移动
          */
         public final void notifyItemMoved(int fromPosition, int toPosition) {
@@ -6092,7 +6242,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * @param positionStart Position of the first item that was inserted
          * @param itemCount     Number of items inserted
          * @see #notifyItemInserted(int)
-         * <p>
+         * <p/>
          * 通知 插入 多个数据
          */
         public final void notifyItemRangeInserted(int positionStart, int itemCount) {
@@ -6128,7 +6278,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          *
          * @param positionStart Previous position of the first item that was removed
          * @param itemCount     Number of items removed from the data set
-         *                      <p>
+         *                      <p/>
          *                      通知多个数据移除
          */
         public final void notifyItemRangeRemoved(int positionStart, int itemCount) {
@@ -6172,7 +6322,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * a <code>RecyclerView</code> can be used to implement a standard vertically scrolling list,
      * a uniform grid, staggered grids, horizontally scrolling collections and more. Several stock
      * layout managers are provided for general use.
-     * <p>
+     * <p/>
      * If the LayoutManager specifies a default constructor or one with the signature
      * ({@link Context}, {@link AttributeSet}, {@code int}, {@code int}), RecyclerView will
      * instantiate and set the LayoutManager when being inflated. Most used properties can
@@ -6285,7 +6435,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Causes the Runnable to execute on the next animation time step.
          * The runnable will be run on the user interface thread.
-         * <p>
+         * <p/>
          * Calling this method when LayoutManager is not attached to a RecyclerView has no effect.
          *
          * @param action The Runnable that will be executed.
@@ -6299,7 +6449,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Removes the specified Runnable from the message queue.
-         * <p>
+         * <p/>
          * Calling this method when LayoutManager is not attached to a RecyclerView has no effect.
          *
          * @param action The Runnable to remove from the message handling queue
@@ -6545,7 +6695,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Scroll to the specified adapter position.
-         * <p>
+         * <p/>
          * Actual position of the item on the screen depends on the LayoutManager implementation.
          *
          * @param position Scroll to this adapter position.
@@ -6624,7 +6774,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * {@link Adapter#notifyItemRemoved(int) removed} or because it is actually not in the
          * visible portion of the container but is being laid out in order to inform RecyclerView
          * in how to animate the item out of view.
-         * <p>
+         * <p/>
          * Views added via this method are going to be invisible to LayoutManager after the
          * dispatchLayout pass is complete. They cannot be retrieved via {@link #getChildAt(int)}
          * or won't be included in {@link #getChildCount()} method.
@@ -6641,7 +6791,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * {@link Adapter#notifyItemRemoved(int) removed} or because it is actually not in the
          * visible portion of the container but is being laid out in order to inform RecyclerView
          * in how to animate the item out of view.
-         * <p>
+         * <p/>
          * Views added via this method are going to be invisible to LayoutManager after the
          * dispatchLayout pass is complete. They cannot be retrieved via {@link #getChildAt(int)}
          * or won't be included in {@link #getChildCount()} method.
@@ -6802,11 +6952,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Finds the view which represents the given adapter position.
-         * <p>
+         * <p/>
          * This method traverses each child since it has no information about child order.
          * Override this method to improve performance if your LayoutManager keeps data about
          * child views.
-         * <p>
+         * <p/>
          * If a view is ignored via {@link #ignoreView(View)}, it is also ignored by this method.
          *
          * @param position Position of the item in adapter
@@ -7129,7 +7279,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns the number of items in the adapter bound to the parent RecyclerView.
-         * <p>
+         * <p/>
          * Note that this number is not necessarily equal to {@link State#getItemCount()}. In
          * methods where State is available, you should use {@link State#getItemCount()} instead.
          * For more details, check the documentation for {@link State#getItemCount()}.
@@ -7168,15 +7318,15 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Flags a view so that it will not be scrapped or recycled.
-         * <p>
+         * <p/>
          * Scope of ignoring a child is strictly restricted to position tracking, scrapping and
          * recyling. Methods like {@link #removeAndRecycleAllViews(Recycler)} will ignore the child
          * whereas {@link #removeAllViews()} or {@link #offsetChildrenHorizontal(int)} will not
          * ignore the child.
-         * <p>
+         * <p/>
          * Before this child can be recycled again, you have to call
          * {@link #stopIgnoringView(View)}.
-         * <p>
+         * <p/>
          * You can call this method only if your LayoutManger is in onLayout or onScroll callback.
          *
          * @param view View to ignore.
@@ -7195,9 +7345,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * View can be scrapped and recycled again.
-         * <p>
+         * <p/>
          * Note that calling this method removes all information in the view holder.
-         * <p>
+         * <p/>
          * You can call this method only if your LayoutManger is in onLayout or onScroll callback.
          *
          * @param view View to ignore.
@@ -7244,7 +7394,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Recycles the scrapped views.
-         * <p>
+         * <p/>
          * When a view is detached and removed, it does not trigger a ViewGroup invalidate. This is
          * the expected behavior if scrapped views are used for animations. Otherwise, we need to
          * call remove and invalidate RecyclerView to ensure UI update.
@@ -7495,7 +7645,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * <li>The Rect's right is set to the total width of right decorations.</li>
          * <li>The Rect's bottom is set to total height of bottom decorations.</li>
          * </ul>
-         * <p>
+         * <p/>
          * Note that item decorations are automatically calculated when one of the LayoutManager's
          * measure child methods is called. If you need to measure the child with custom specs via
          * {@link View#measure(int, int)}, you can use this method to get decorations.
@@ -7514,7 +7664,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns the total height of item decorations applied to child's top.
-         * <p>
+         * <p/>
          * Note that this value is not updated until the View is measured or
          * {@link #calculateItemDecorationsForChild(View, Rect)} is called.
          *
@@ -7529,7 +7679,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns the total height of item decorations applied to child's bottom.
-         * <p>
+         * <p/>
          * Note that this value is not updated until the View is measured or
          * {@link #calculateItemDecorationsForChild(View, Rect)} is called.
          *
@@ -7544,7 +7694,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns the total width of item decorations applied to child's left.
-         * <p>
+         * <p/>
          * Note that this value is not updated until the View is measured or
          * {@link #calculateItemDecorationsForChild(View, Rect)} is called.
          *
@@ -7559,7 +7709,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns the total width of item decorations applied to child's right.
-         * <p>
+         * <p/>
          * Note that this value is not updated until the View is measured or
          * {@link #calculateItemDecorationsForChild(View, Rect)} is called.
          *
@@ -7806,7 +7956,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Called when an item is moved withing the adapter.
-         * <p>
+         * <p/>
          * Note that, an item may also change position in response to another ADD/REMOVE/MOVE
          * operation. This callback is only called if and only if {@link Adapter#notifyItemMoved}
          * is called.
@@ -7996,9 +8146,9 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Removes all views and recycles them using the given recycler.
-         * <p>
+         * <p/>
          * If you want to clean cached views as well, you should call {@link Recycler#clear()} too.
-         * <p>
+         * <p/>
          * If a View is marked as "ignored", it is not removed nor recycled.
          *
          * @param recycler Recycler to use to recycle children
@@ -8023,10 +8173,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Called by the AccessibilityDelegate when the information about the current layout should
          * be populated.
-         * <p>
+         * <p/>
          * Default implementation adds a {@link
          * android.support.v4.view.accessibility.AccessibilityNodeInfoCompat.CollectionInfoCompat}.
-         * <p>
+         * <p/>
          * You should override
          * {@link #getRowCountForAccessibility(RecyclerView.Recycler, RecyclerView.State)},
          * {@link #getColumnCountForAccessibility(RecyclerView.Recycler, RecyclerView.State)},
@@ -8073,7 +8223,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Called by the accessibility delegate to initialize an accessibility event.
-         * <p>
+         * <p/>
          * Default implementation adds item count and scroll information to the event.
          *
          * @param recycler The Recycler that can be used to convert view positions into adapter
@@ -8112,7 +8262,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Called by the AccessibilityDelegate when the accessibility information for a specific
          * item should be populated.
-         * <p>
+         * <p/>
          * Default implementation adds basic positioning information about the item.
          *
          * @param recycler The Recycler that can be used to convert view positions into adapter
@@ -8137,7 +8287,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * A LayoutManager can call this method to force RecyclerView to run simple animations in
          * the next layout pass, even if there is not any trigger to do so. (e.g. adapter data
          * change).
-         * <p>
+         * <p/>
          * Note that, calling this method will not guarantee that RecyclerView will run animations
          * at all. For example, if there is not any {@link ItemAnimator} set, RecyclerView will
          * not run any animations but will still clear this flag after the layout is complete.
@@ -8151,7 +8301,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * {@link AccessibilityNodeInfoCompat.CollectionInfoCompat#SELECTION_MODE_NONE},
          * {@link AccessibilityNodeInfoCompat.CollectionInfoCompat#SELECTION_MODE_SINGLE} or
          * {@link AccessibilityNodeInfoCompat.CollectionInfoCompat#SELECTION_MODE_MULTIPLE}.
-         * <p>
+         * <p/>
          * Default implementation returns
          * {@link AccessibilityNodeInfoCompat.CollectionInfoCompat#SELECTION_MODE_NONE}.
          *
@@ -8167,7 +8317,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns the number of rows for accessibility.
-         * <p>
+         * <p/>
          * Default implementation returns the number of items in the adapter if LayoutManager
          * supports vertical scrolling or 1 if LayoutManager does not support vertical
          * scrolling.
@@ -8186,7 +8336,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns the number of columns for accessibility.
-         * <p>
+         * <p/>
          * Default implementation returns the number of items in the adapter if LayoutManager
          * supports horizontal scrolling or 1 if LayoutManager does not support horizontal
          * scrolling.
@@ -8205,7 +8355,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns whether layout is hierarchical or not to be used for accessibility.
-         * <p>
+         * <p/>
          * Default implementation returns false.
          *
          * @param recycler The Recycler that can be used to convert view positions into adapter
@@ -8273,7 +8423,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Called by AccessibilityDelegate when an accessibility action is requested on one of the
          * children of LayoutManager.
-         * <p>
+         * <p/>
          * Default implementation does not do anything.
          *
          * @param recycler The Recycler that can be used to convert view positions into adapter
@@ -8344,7 +8494,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * views (in {@link ItemDecoration#onDraw(Canvas, RecyclerView, RecyclerView.State) onDraw()}
      * and after the items (in {@link ItemDecoration#onDrawOver(Canvas, RecyclerView,
      * RecyclerView.State)}.</p>
-     * <p>
+     * <p/>
      * Item 的分割线
      */
     public static abstract class ItemDecoration {
@@ -8401,13 +8551,13 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * Retrieve any offsets for the given item. Each field of <code>outRect</code> specifies
          * the number of pixels that the item view should be inset by, similar to padding or margin.
          * The default implementation sets the bounds of outRect to 0 and returns.
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * If this ItemDecoration does not affect the positioning of item views, it should set
          * all four fields of <code>outRect</code> (left, top, right, bottom) to zero
          * before returning.
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * If you need to access Adapter for additional data, you can call
          * {@link RecyclerView#getChildAdapterPosition(View)} to get the adapter position of the
          * View.
@@ -8416,7 +8566,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * @param view    The child view to decorate
          * @param parent  RecyclerView this ItemDecoration is decorating
          * @param state   The current state of RecyclerView.
-         *                <p>
+         *                <p/>
          *                这个方法俺决定的了 Item 的 上下左右的 间距   在测量的时候会用到
          */
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, State state) {
@@ -8478,7 +8628,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     /**
      * An implementation of {@link RecyclerView.OnItemTouchListener} that has empty method bodies and
      * default return values.
-     * <p>
+     * <p/>
      * You may prefer to extend this class if you don't need to override all methods. Another
      * benefit of using this class is future compatibility. As the interface may change, we'll
      * always provide a default implementation on this class so that your code won't break when
@@ -8506,7 +8656,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      *
      * @see RecyclerView#setOnScrollListener(OnScrollListener) and
      * RecyclerView#addOnScrollListener(OnScrollListener)
-     * <p>
+     * <p/>
      * If you are planning to have several listeners at the same time, use
      * RecyclerView#addOnScrollListener. If there will be only one listener at the time and you
      * want your components to be able to easily replace the listener use
@@ -8526,7 +8676,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Callback method to be invoked when the RecyclerView has been scrolled. This will be
          * called after the scroll has completed.
-         * <p>
+         * <p/>
          * This callback will also be called if visible item range changes after a layout
          * calculation. In that case, dx and dy will be 0.
          *
@@ -8548,7 +8698,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * This method is called whenever the view in the ViewHolder is recycled.
-         * <p>
+         * <p/>
          * RecyclerView calls this method right before clearing ViewHolder's internal data and
          * sending it to RecycledViewPool. This way, if ViewHolder was holding valid information
          * before being recycled, you can call {@link ViewHolder#getAdapterPosition()} to get
@@ -8617,7 +8767,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * This ViewHolder has been bound to a position; mPosition, mItemId and mItemViewType
          * are all valid.
-         * <p>
+         * <p/>
          * ViewHolder 以及绑定到一个位置上了 mItemId mItemViewType 都验证了
          */
         static final int FLAG_BOUND = 1 << 0;
@@ -8625,7 +8775,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * The data this ViewHolder's view reflects is stale and needs to be rebound
          * by the adapter. mPosition and mItemId are consistent.
-         * <p>
+         * <p/>
          * 表示数据改变了 需要重新 绑定 Adapter  位置 和 ItemId 是不变?
          * 表示需要更新
          */
@@ -8643,7 +8793,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * This ViewHolder points at data that represents an item previously removed from the
          * data set. Its view may still be used for things like outgoing animations.
-         * <p>
+         * <p/>
          * 这个ViewHolder指向的数据被移除了,
          * 这个View 仍然可能被使用  如: 在 推崇 remove 动画中
          */
@@ -8652,7 +8802,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * This ViewHolder should not be recycled. This flag is set via setIsRecyclable()
          * and is intended to keep views around during animations.
-         * <p>
+         * <p/>
          * 表示该ViewHolder 不应该被回收
          * 是为了View在能够在动画过程中不必拿
          */
@@ -8663,7 +8813,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * for this itemView. When returned from scrap, ViewHolder stays in the scrap list until
          * the end of the layout pass and then recycled by RecyclerView if it is not added back to
          * the RecyclerView.
-         * <p>
+         * <p/>
          * 表示 VIewHolder 来自于 碎片的回收, 我们期望 在addView的时候 使用这个ItemView
          * 当然 来自 碎片是, ViewHolder 仍然在 碎片List 中 直到布局听歌, 如果 没有添加到 RecycleView 中
          */
@@ -8673,7 +8823,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * This ViewHolder is fully managed by the LayoutManager. We do not scrap, recycle or remove
          * it unless LayoutManager is replaced.
          * It is still fully visible to the LayoutManager.
-         * <p>
+         * <p/>
          * 标记 这个ViewHolder 完全有LayoutManager 管理,  不会 回收 替换 移除 直到 LayoutManager 替换它
          * 相对于 LayoutManager 完全可见
          */
@@ -8682,7 +8832,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * When the View is detached form the parent, we set this flag so that we can take correct
          * action when we need to remove it or add it back.
-         * <p>
+         * <p/>
          * 如果这个VIew 从父View 中 detached 了 那么就会碎这个这个标记
          * so 我们才能直到  是要 移除它 还是 重新添加回来
          */
@@ -8694,7 +8844,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * set even when the type does not match. Also, FLAG_ADAPTER_POSITION_UNKNOWN is set as soon
          * as adapter notification arrives vs FLAG_INVALID is set lazily before layout is
          * re-calculated.
-         * <p>
+         * <p/>
          * 当我们不确定 这个VIewHolder 在adapter中的位置
          * 直到 绑定了一个新的位置
          * 他不同于 FLAG_INVALID 因为 FLAG_INVALID 表示 连type 都不匹配
@@ -8704,21 +8854,21 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Set when a addChangePayload(null) is called
-         * <p>
+         * <p/>
          * 标记 adapter 全部更新  在 addChangePayload 方法中被标记
          */
         static final int FLAG_ADAPTER_FULLUPDATE = 1 << 10;
 
         /**
          * Used by ItemAnimator when a ViewHolder's position changes
-         * <p>
+         * <p/>
          * 在Item动画中使用, 当viewHolder 的位置该笔
          */
         static final int FLAG_MOVED = 1 << 11;
 
         /**
          * Used by ItemAnimator when a ViewHolder appears in pre-layout
-         * <p>
+         * <p/>
          * 在 当 ViewHolder 出现上一个布局中 的 Item 动画
          */
         static final int FLAG_APPEARED_IN_PRE_LAYOUT = 1 << 12;
@@ -8726,23 +8876,23 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Used when a ViewHolder starts the layout pass as a hidden ViewHolder but is re-used from
          * hidden list (as if it was scrap) without being recycled in between.
-         * <p>
+         * <p/>
          * 当 一个ViewHolder 在布局中看不到了 但是 它能在 哪些看不到的列表中重新 利用 而不是 会后
-         * <p>
+         * <p/>
          * When a ViewHolder is hidden, there are 2 paths it can be re-used:
          * a) Animation ends, view is recycled and used from the recycle pool.
          * b) LayoutManager asks for the View for that position while the ViewHolder is hidden.
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * 当一个 ViewHolder 被隐藏, 有两张方式可以重用
          * 1. 动画结束是, view 被回收到 回收池
          * 2. LayoutManager 请求 这个位置的VIew, 尽管它已经看不到了
-         * <p>
+         * <p/>
          * This flag is used to represent "case b" where the ViewHolder is reused without being
          * recycled (thus "bounced" from the hidden list). This state requires special handling
          * because the ViewHolder must be added to pre layout maps for animations as if it was
          * already there.
-         * <p>
+         * <p/>
          * 这个 flag 使用在 上面说的第二种 VIewHolder 重新利用不是通过hi手, 而是 从哪些 看不见的VIew中反弹回来
          * 这种状态 需要 特殊操作
          * 因为 ViewHolder 必须 在布局之前加入 为了动画
@@ -8791,7 +8941,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Is set when VH is bound from the adapter and cleaned right before it is sent to
          * {@link RecycledViewPool}.
-         * <p>
+         * <p/>
          * Recyccle 的引用
          */
         RecyclerView mOwnerRecyclerView;
@@ -8871,7 +9021,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * @deprecated This method is deprecated because its meaning is ambiguous due to the async
          * handling of adapter updates. Please use {@link #getLayoutPosition()} or
          * {@link #getAdapterPosition()} depending on your use case.
-         * <p>
+         * <p/>
          * 这个方法不在使用
          */
         @Deprecated
@@ -8881,26 +9031,26 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns the position of the ViewHolder in terms of the latest layout pass.
-         * <p>
+         * <p/>
          * This position is mostly used by RecyclerView components to be consistent while
          * RecyclerView lazily processes adapter updates.
-         * <p>
+         * <p/>
          * For performance and animation reasons, RecyclerView batches all adapter updates until the
          * next layout pass. This may cause mismatches between the Adapter position of the item and
          * the position it had in the latest layout calculations.
-         * <p>
+         * <p/>
          * LayoutManagers should always call this method while doing calculations based on item
          * positions. All methods in {@link RecyclerView.LayoutManager}, {@link RecyclerView.State},
          * {@link RecyclerView.Recycler} that receive a position expect it to be the layout position
          * of the item.
-         * <p>
+         * <p/>
          * If LayoutManager needs to call an external method that requires the adapter position of
          * the item, it can use {@link #getAdapterPosition()} or
          * {@link RecyclerView.Recycler#convertPreLayoutPositionToPostLayout(int)}.
          *
          * @return Returns the adapter position of the ViewHolder in the latest layout pass.
          * @see #getAdapterPosition()
-         * <p>
+         * <p/>
          * 获取不布局 位置 ?
          */
         public final int getLayoutPosition() {
@@ -8909,10 +9059,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Returns the Adapter position of the item represented by this ViewHolder.
-         * <p>
+         * <p/>
          * Note that this might be different than the {@link #getLayoutPosition()} if there are
          * pending adapter updates but a new layout pass has not happened yet.
-         * <p>
+         * <p/>
          * RecyclerView does not handle any adapter updates until the next layout traversal. This
          * may create temporary inconsistencies between what user sees on the screen and what
          * adapter contents have. This inconsistency is not important since it will be less than
@@ -8920,7 +9070,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * adapter. Sometimes, you may need to get the exact adapter position to do
          * some actions in response to user events. In that case, you should use this method which
          * will calculate the Adapter position of the ViewHolder.
-         * <p>
+         * <p/>
          * Note that if you've called {@link RecyclerView.Adapter#notifyDataSetChanged()}, until the
          * next layout pass, the return value of this method will be {@link #NO_POSITION}.
          *
@@ -8928,7 +9078,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * {@link RecyclerView#NO_POSITION} if item has been removed from the adapter,
          * {@link RecyclerView.Adapter#notifyDataSetChanged()} has been called after the last
          * layout pass or the ViewHolder has already been recycled.
-         * <p>
+         * <p/>
          * 获取这个ViewHolder 在adapter中的位置
          */
         public final int getAdapterPosition() {
@@ -8941,7 +9091,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * When LayoutManager supports animations, RecyclerView tracks 3 positions for ViewHolders
          * to perform animations.
-         * <p>
+         * <p/>
          * If a ViewHolder was laid out in the previous onLayout call, old position will keep its
          * adapter index in the previous layout.
          *
@@ -9116,7 +9266,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Called when the child view enters the hidden state
-         * <p>
+         * <p/>
          * 进入到 不可见状态
          */
         private void onEnteredHiddenState() {
@@ -9130,7 +9280,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Called when the child view leaves the hidden state
-         * <p>
+         * <p/>
          * 离开不可见状态
          */
         private void onLeftHiddenState() {
@@ -9170,7 +9320,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * call to setIsRecyclabe(false) should always be matched with a later call to
          * setIsRecyclable(true)). Pairs of calls may be nested, as the state is internally
          * reference-counted.
-         * <p>
+         * <p/>
          * 设置是否可回收
          *
          * @param recyclable Whether this item is available to be recycled. Default value
@@ -9214,7 +9364,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Returns whether we have animations referring to this view holder or not.
          * This is similar to isRecyclable flag but does not check transient state.
-         * <p>
+         * <p/>
          * 是否需要 保存 想一个 child 那样,  就像 isRecyclable 方法 不过这里不需要检查transient state
          */
         private boolean shouldBeKeptAsChild() {
@@ -9224,6 +9374,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * @return True if ViewHolder is not refenrenced by RecyclerView animations but has
          * transient state which will prevent it from being recycled.
+         * 如果 返回true 表示是过度状态 没有 动画应该 防止被回收
          */
         private boolean doesTransientStatePreventRecycling() {
             return (mFlags & FLAG_NOT_RECYCLABLE) == 0 && ViewCompat.hasTransientState(itemView);
@@ -9297,10 +9448,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * {@link RecyclerView}. Custom {@link LayoutManager layout managers} are encouraged
      * to create their own subclass of this <code>LayoutParams</code> class
      * to store any additional required per-child view metadata about the layout.
-     * <p>
-     * <p>
+     * <p/>
+     * <p/>
      * ViewHodler 在子Vie 的 LayoutParam 中
-     * <p>
+     * <p/>
      * LayoutParam 是给ziView 用的
      */
     public static class LayoutParams extends android.view.ViewGroup.MarginLayoutParams {
@@ -9344,7 +9495,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Returns true if the view this LayoutParams is attached to needs to have its content
          * updated from the corresponding adapter.
-         * <p>
+         * <p/>
          * View 是否需要刷新
          *
          * @return true if the view should have its content updated
@@ -9356,7 +9507,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Returns true if the view this LayoutParams is attached to is now representing
          * potentially invalid data. A LayoutManager should scrap/recycle it.
-         * <p>
+         * <p/>
          * 返回  View 是否 无效了  如果无效了 则需要回收
          *
          * @return true if the view is invalid
@@ -9369,7 +9520,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * Returns true if the adapter data item corresponding to the view this LayoutParams
          * is attached to has been removed from the data set. A LayoutManager may choose to
          * treat it differently in order to animate its outgoing or disappearing state.
-         * <p>
+         * <p/>
          * 返回这个item 是否被移除了 从Adapter中的数据中移除了
          *
          * @return true if the item the view corresponds to was removed from the data set
@@ -9382,7 +9533,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * Returns true if the adapter data item corresponding to the view this LayoutParams
          * is attached to has been changed in the data set. A LayoutManager may choose to
          * treat it differently in order to animate its changing state.
-         * <p>
+         * <p/>
          * 这个Item 是否改变了
          *
          * @return true if the item the view corresponds to was changed in the data set
@@ -9393,7 +9544,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * @deprecated use {@link #getViewLayoutPosition()} or {@link #getViewAdapterPosition()}
-         * <p>
+         * <p/>
          * 获取 View 的位置
          */
         public int getViewPosition() {
@@ -9403,7 +9554,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Returns the adapter position that the view this LayoutParams is attached to corresponds
          * to as of latest layout calculation.
-         * <p>
+         * <p/>
          * 获取最新的 View的位置 在Layout中的位置
          *
          * @return the adapter position this view as of latest layout pass
@@ -9415,7 +9566,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Returns the up-to-date adapter position that the view this LayoutParams is attached to
          * corresponds to.
-         * <p>
+         * <p/>
          * 获取View 在 Adapter 中的位置
          *
          * @return the up-to-date adapter position this view. It may return
@@ -9430,7 +9581,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
     /**
      * Observer base class for watching changes to an {@link Adapter}.
      * See {@link Adapter#registerAdapterDataObserver(AdapterDataObserver)}.
-     * <p>
+     * <p/>
      * adapter 的 内容观察者
      */
     public static abstract class AdapterDataObserver {
@@ -9757,10 +9908,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             /**
              * Instead of specifying pixels to scroll, use the target position to jump using
              * {@link RecyclerView#scrollToPosition(int)}.
-             * <p>
+             * <p/>
              * You may prefer using this method if scroll target is really far away and you prefer
              * to jump to a location and smooth scroll afterwards.
-             * <p>
+             * <p/>
              * Note that calling this method takes priority over other update methods such as
              * {@link #update(int, int, int, Interpolator)}, {@link #setX(float)},
              * {@link #setY(float)} and #{@link #setInterpolator(Interpolator)}. If you call
@@ -9938,7 +10089,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * This is public so that the CREATOR can be access on cold launch.
-     *
+     * <p/>
      * 保存状态的一个类
      * 就是一个 简单的 Parcelable
      *
@@ -9996,8 +10147,8 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
      * object to component callbacks and these components can use it to exchange data.</p>
      * <p>If you implement custom components, you can use State's put/get/remove methods to pass
      * data between your components without needing to manage their lifecycles.</p>
-     *
-     *
+     * <p/>
+     * <p/>
      * Recycle的状态类  用的好像不是很多
      */
     public static class State {
@@ -10010,13 +10161,13 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Number of items adapter has.
-         *  item 的数量
+         * item 的数量
          */
         int mItemCount = 0;
 
         /**
          * Number of items adapter had in the previous layout.
-         *
+         * <p/>
          * 上一次布局 是的 item 数量
          */
         private int mPreviousLayoutItemCount = 0;
@@ -10024,7 +10175,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Number of items that were NOT laid out but has been deleted from the adapter after the
          * previous layout.
-         *
+         * <p/>
          * 在上次 布局中 删除的 不可见的item 的数量
          */
         private int mDeletedInvisibleItemCountSincePreviousLayout = 0;
@@ -10075,8 +10226,6 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          *
          * @return true if RecyclerView is calculating predictive animations to be run at the end
          * of the layout pass.
-         *
-         *
          */
         public boolean willRunPredictiveAnimations() {
             return mRunPredictiveAnimations;
@@ -10143,7 +10292,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * @return Adapter index of the target item or
          * {@link RecyclerView#NO_POSITION} if there is no target
          * position.
-         *
+         * <p/>
          * 获取 移动目标位置
          */
         public int getTargetScrollPosition() {
@@ -10155,7 +10304,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          *
          * @return true if scroll is being triggered to make a certain position visible
          * @see #getTargetScrollPosition()
-         *
+         * <p/>
          * 是否有 移动目标位置
          */
         public boolean hasTargetScrollPosition() {
@@ -10165,7 +10314,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * @return true if the structure of the data set has changed since the last call to
          * onLayoutChildren, false otherwise
-         *
+         * <p/>
          * 机构是否改变
          */
         public boolean didStructureChange() {
@@ -10176,28 +10325,28 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * Returns the total number of items that can be laid out. Note that this number is not
          * necessarily equal to the number of items in the adapter, so you should always use this
          * number for your position calculations and never access the adapter directly.
-         * <p>
+         * <p/>
          * RecyclerView listens for Adapter's notify events and calculates the effects of adapter
          * data changes on existing Views. These calculations are used to decide which animations
          * should be run.
-         * <p>
+         * <p/>
          * To support predictive animations, RecyclerView may rewrite or reorder Adapter changes to
          * present the correct state to LayoutManager in pre-layout pass.
-         * <p>
+         * <p/>
          * For example, a newly added item is not included in pre-layout item count because
          * pre-layout reflects the contents of the adapter before the item is added. Behind the
          * scenes, RecyclerView offsets {@link Recycler#getViewForPosition(int)} calls such that
          * LayoutManager does not know about the new item's existence in pre-layout. The item will
          * be available in second layout pass and will be included in the item count. Similar
          * adjustments are made for moved and removed items as well.
-         * <p>
+         * <p/>
          * You can get the adapter's item count via {@link LayoutManager#getItemCount()} method.
          *
          * @return The number of items currently available
          * @see LayoutManager#getItemCount()
-         *
+         * <p/>
          * 获取Item的数量
-         *
+         * <p/>
          * 如果在预先布局 则 = 预先布局的Item数量 - 删除掉的不可见的 数量
          * 佛日志 等于 itemCOunt
          */
@@ -10275,7 +10424,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * The Item represented by this ViewHolder is updated.
-         * <p>
+         * <p/>
          *
          * @see #recordPreLayoutInformation(State, ViewHolder, int, List)
          */
@@ -10283,7 +10432,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * The Item represented by this ViewHolder is removed from the adapter.
-         * <p>
+         * <p/>
          *
          * @see #recordPreLayoutInformation(State, ViewHolder, int, List)
          */
@@ -10292,7 +10441,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Adapter {@link Adapter#notifyDataSetChanged()} has been called and the content
          * represented by this ViewHolder is invalid.
-         * <p>
+         * <p/>
          *
          * @see #recordPreLayoutInformation(State, ViewHolder, int, List)
          */
@@ -10303,7 +10452,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * not bound to {@link Adapter#notifyItemMoved(int, int)}. It might be set in response to
          * any adapter change that may have a side effect on this item. (e.g. The item before this
          * one has been removed from the Adapter).
-         * <p>
+         * <p/>
          *
          * @see #recordPreLayoutInformation(State, ViewHolder, int, List)
          */
@@ -10315,7 +10464,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * invisible and it may become visible in the post layout phase. LayoutManagers may prefer
          * to add new items in pre-layout to specify their virtual location when they are invisible
          * (e.g. to specify the item should <i>animate in</i> from below the visible area).
-         * <p>
+         * <p/>
          *
          * @see #recordPreLayoutInformation(State, ViewHolder, int, List)
          */
@@ -10430,25 +10579,25 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Called by the RecyclerView before the layout begins. Item animator should record
          * necessary information about the View before it is potentially rebound, moved or removed.
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * 在布局开始前 由RecycleVIew 调用 Item 的动画 应该极力 关于 VIew 之前是 移动 还是 Removes 还是 重新绑定
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * The data returned from this method will be passed to the related <code>animate**</code>
          * methods.
          * 这个方法的返回数据 将于传递给 系那个管的 动画 方法
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * Note that this method may be called after pre-layout phase if LayoutManager adds new
          * Views to the layout in pre-layout pass.
-         * <p>
+         * <p/>
          * 记录 这个方法 将会被 调用 在 预先布局 逐步的  如果LayoutManager 加入新的 View 在布局中
-         * <p>
-         * <p>
+         * <p/>
+         * <p/>
          * The default implementation returns an {@link ItemHolderInfo} which holds the bounds of
          * the View and the adapter change flags.
-         * <p>
+         * <p/>
          * 默认坏会一个  ItemHolderInfo 将会持有 View 的绑定信息 和动画的改变 标志
          *
          * @param state       The current State of RecyclerView which includes some useful data
@@ -10480,10 +10629,10 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Called by the RecyclerView after the layout is complete. Item animator should record
          * necessary information about the View's final state.
-         * <p>
+         * <p/>
          * The data returned from this method will be passed to the related <code>animate**</code>
          * methods.
-         * <p>
+         * <p/>
          * The default implementation returns an {@link ItemHolderInfo} which holds the bounds of
          * the View.
          *
@@ -10508,18 +10657,18 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Called by the RecyclerView when a ViewHolder has disappeared from the layout.
-         * <p>
+         * <p/>
          * This means that the View was a child of the LayoutManager when layout started but has
          * been removed by the LayoutManager. It might have been removed from the adapter or simply
          * become invisible due to other factors. You can distinguish these two cases by checking
          * the change flags that were passed to
          * {@link #recordPreLayoutInformation(State, ViewHolder, int, List)}.
-         * <p>
+         * <p/>
          * If LayoutManager supports predictive animations, it might provide a target disappear
          * location for the View by laying it out in that location. When that happens,
          * RecyclerView will call {@link #recordPostLayoutInformation(State, ViewHolder)} and the
          * response of that call will be passed to this method as the <code>postLayoutInfo</code>.
-         * <p>
+         * <p/>
          * ItemAnimator must call {@link #dispatchAnimationFinished(ViewHolder)} when the animation
          * is complete (or instantly call {@link #dispatchAnimationFinished(ViewHolder)} if it
          * decides not to animate the view).
@@ -10538,11 +10687,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Called by the RecyclerView when a ViewHolder is added to the layout.
-         * <p>
+         * <p/>
          * In detail, this means that the ViewHolder was <b>not</b> a child when the layout started
          * but has  been added by the LayoutManager. It might be newly added to the adapter or
          * simply become visible due to other factors.
-         * <p>
+         * <p/>
          * ItemAnimator must call {@link #dispatchAnimationFinished(ViewHolder)} when the animation
          * is complete (or instantly call {@link #dispatchAnimationFinished(ViewHolder)} if it
          * decides not to animate the view).
@@ -10565,16 +10714,16 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * Called by the RecyclerView when a ViewHolder is present in both before and after the
          * layout and RecyclerView has not received a {@link Adapter#notifyItemChanged(int)} call
          * for it or a {@link Adapter#notifyDataSetChanged()} call.
-         * <p>
+         * <p/>
          * This ViewHolder still represents the same data that it was representing when the layout
          * started but its position / size may be changed by the LayoutManager.
-         * <p>
+         * <p/>
          * If the Item's layout position didn't change, RecyclerView still calls this method because
          * it does not track this information (or does not necessarily know that an animation is
          * not required). Your ItemAnimator should handle this case and if there is nothing to
          * animate, it should call {@link #dispatchAnimationFinished(ViewHolder)} and return
          * <code>false</code>.
-         * <p>
+         * <p/>
          * ItemAnimator must call {@link #dispatchAnimationFinished(ViewHolder)} when the animation
          * is complete (or instantly call {@link #dispatchAnimationFinished(ViewHolder)} if it
          * decides not to animate the view).
@@ -10599,34 +10748,34 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * {@link Adapter#notifyDataSetChanged()} is called, this method <b>will not</b> be called,
          * instead, {@link #animateAppearance(ViewHolder, ItemHolderInfo, ItemHolderInfo)} will be
          * called for the new ViewHolder and the old one will be recycled.
-         * <p>
+         * <p/>
          * If this method is called due to a {@link Adapter#notifyDataSetChanged()} call, there is
          * a good possibility that item contents didn't really change but it is rebound from the
          * adapter. {@link DefaultItemAnimator} will skip animating the View if its location on the
          * screen didn't change and your animator should handle this case as well and avoid creating
          * unnecessary animations.
-         * <p>
+         * <p/>
          * When an item is updated, ItemAnimator has a chance to ask RecyclerView to keep the
          * previous presentation of the item as-is and supply a new ViewHolder for the updated
          * presentation (see: {@link #canReuseUpdatedViewHolder(ViewHolder)}.
          * This is useful if you don't know the contents of the Item and would like
          * to cross-fade the old and the new one ({@link DefaultItemAnimator} uses this technique).
-         * <p>
+         * <p/>
          * When you are writing a custom item animator for your layout, it might be more performant
          * and elegant to re-use the same ViewHolder and animate the content changes manually.
-         * <p>
+         * <p/>
          * When {@link Adapter#notifyItemChanged(int)} is called, the Item's view type may change.
          * If the Item's view type has changed or ItemAnimator returned <code>false</code> for
          * this ViewHolder when {@link #canReuseUpdatedViewHolder(ViewHolder)} was called, the
          * <code>oldHolder</code> and <code>newHolder</code> will be different ViewHolder instances
          * which represent the same Item. In that case, only the new ViewHolder is visible
          * to the LayoutManager but RecyclerView keeps old ViewHolder attached for animations.
-         * <p>
+         * <p/>
          * ItemAnimator must call {@link #dispatchAnimationFinished(ViewHolder)} for each distinct
          * ViewHolder when their animation is complete
          * (or instantly call {@link #dispatchAnimationFinished(ViewHolder)} if it decides not to
          * animate the view).
-         * <p>
+         * <p/>
          * If oldHolder and newHolder are the same instance, you should call
          * {@link #dispatchAnimationFinished(ViewHolder)} <b>only once</b>.
          *
@@ -10718,7 +10867,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Method to be called by subclasses when an animation is finished.
-         * <p>
+         * <p/>
          * For each call RecyclerView makes to
          * {@link #animateAppearance(ViewHolder, ItemHolderInfo, ItemHolderInfo)
          * animateAppearance()},
@@ -10728,7 +10877,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * animateDisappearance()}, there
          * should
          * be a matching {@link #dispatchAnimationFinished(ViewHolder)} call by the subclass.
-         * <p>
+         * <p/>
          * For {@link #animateChange(ViewHolder, ViewHolder, ItemHolderInfo, ItemHolderInfo)
          * animateChange()}, sublcass should call this method for both the <code>oldHolder</code>
          * and <code>newHolder</code>  (if they are not the same instance).
@@ -10756,7 +10905,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         /**
          * Method to be called by subclasses when an animation is started.
-         * <p>
+         * <p/>
          * For each call RecyclerView makes to
          * {@link #animateAppearance(ViewHolder, ItemHolderInfo, ItemHolderInfo)
          * animateAppearance()},
@@ -10765,11 +10914,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * {@link #animateDisappearance(ViewHolder, ItemHolderInfo, ItemHolderInfo)
          * animateDisappearance()}, there should be a matching
          * {@link #dispatchAnimationStarted(ViewHolder)} call by the subclass.
-         * <p>
+         * <p/>
          * For {@link #animateChange(ViewHolder, ViewHolder, ItemHolderInfo, ItemHolderInfo)
          * animateChange()}, sublcass should call this method for both the <code>oldHolder</code>
          * and <code>newHolder</code> (if they are not the same instance).
-         * <p>
+         * <p/>
          * If your ItemAnimator decides not to animate a ViewHolder, it should call
          * {@link #dispatchAnimationFinished(ViewHolder)} <b>without</b> calling
          * {@link #dispatchAnimationStarted(ViewHolder)}.
@@ -10824,7 +10973,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * When an item is changed, ItemAnimator can decide whether it wants to re-use
          * the same ViewHolder for animations or RecyclerView should create a copy of the
          * item and ItemAnimator will use both to run the animation (e.g. cross-fade).
-         * <p>
+         * <p/>
          * Note that this method will only be called if the {@link ViewHolder} still has the same
          * type ({@link Adapter#getItemViewType(int)}). Otherwise, ItemAnimator will always receive
          * both {@link ViewHolder}s in the
@@ -10854,7 +11003,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         /**
          * Returns a new {@link ItemHolderInfo} which will be used to store information about the
          * ViewHolder. This information will later be passed into <code>animate**</code> methods.
-         * <p>
+         * <p/>
          * You can override this method if you want to extend {@link ItemHolderInfo} and provide
          * your own instances.
          *
@@ -10891,7 +11040,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
          * {@link #recordPostLayoutInformation(RecyclerView.State, ViewHolder)} returns this data
          * structure. You can extend this class if you would like to keep more information about
          * the Views.
-         * <p>
+         * <p/>
          * If you want to provide your own implementation butstill use `super` methods to record
          * basic information, you can override {@link #obtainHolderInfo()} to provide your own
          * instances.
@@ -10972,7 +11121,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
     /**
      * A callback interface that can be used to alter the drawing order of RecyclerView children.
-     * <p>
+     * <p/>
      * It works using the {@link ViewGroup#getChildDrawingOrder(int, int)} method, so any case
      * that applies to that method also applies to this callback. For example, changing the drawing
      * order of two views will not have any effect if their elevation values are different since

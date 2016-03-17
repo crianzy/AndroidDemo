@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <com.czy.recycleviewpagerscrollerdemo.snappy.RecycleViewParent
+    <com.czy.recycleviewpagerscrollerdemo.ScrollableLinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.czy.recycleviewpagerscrollerdemo.snappy.SnappyRecyclerView
-            android:id="@+id/recycle_view"
+        <TextView
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="300dp"
+            android:background="@color/gray"
+            android:text="header"
+            />
 
-    </com.czy.recycleviewpagerscrollerdemo.snappy.RecycleViewParent>
-
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/header">
+        </android.support.v4.view.ViewPager>
+    </com.czy.recycleviewpagerscrollerdemo.ScrollableLinearLayout>
 </RelativeLayout>

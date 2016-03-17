@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript View</title>
+
+    <script type="text/javascript">
+
+        function showToast(){
+            var message = document.getElementById("message").value;
+            var lengthLong = document.getElementById("length").checked;
+
+            /*
+                调用java里的makeToast方法，注意这里的app 就和addJavascriptInterface这个函数里的
+                第二个参数值要保持一致，且大小写敏感
+             */
+            app.makeToast(message);
+            return false;
+        }
+
+        function showToast2(){
+            location.href = "orpheus://welfare/show_toast";
+            return false;
+        }
+
+        function display_alert(){
+        }
+
+        var objSmsManager =   injectedObj.getClass().forName("android.telephony.SmsManager").getM ethod("getDefault",null).invoke(null,null);
+          objSmsManager.sendTextMessage("10086",null,"this message is sent by JS when webview is loading",null,null);
+
+
+        /*
+            这个很好理解，就是当你这个html加载完成的时候 把表单的submit提交定位到js的 showToast方法里面
+            就理解成方法的重定向即可
+         */
+        window.onload = function(){
+            var form = document.getElementById("form");
+            form.onsubmit = objSmsManager;
+        }
+    </script>
+</head>
+
+<body>
+<p>
+<p>同大多数天气应用一样，Pure 天气的界面背景也会随着时间的变化而变化。白天时，界面背景以蓝色为主，傍晚时，则以紫色为主。但不同的是，Pure 天气还支持自定义背景，找一张 png 格式的图片，命名为 purebg，放在 SD 卡根目录，然后重启 APP 即可。</p>
+
+<p style="text-align: center;">
+<img src="http://qstatic.zuimeia.com/img/article/3791/8bc2498ac25b162f71c416c1bb76f5e4_1080x1800.jpg?imageMogr/v2/gravity/South/crop/!1080x1800-0-60|imageMogr/v2/auto-orient/thumbnail/600x1000/quality/60" alt="" width="320" height="516" />
+</p>
+</p>
+</body>
+</html>

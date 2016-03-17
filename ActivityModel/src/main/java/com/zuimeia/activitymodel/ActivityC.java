@@ -37,8 +37,10 @@ public class ActivityC extends Activity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContxt(), ActivityD.class);
-                startActivity(intent);
+                setResult(RESULT_OK, null);
+                finish();
+//                Intent intent = new Intent(getContxt(), ActivityD.class);
+//                startActivity(intent);
             }
         });
     }

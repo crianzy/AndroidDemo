@@ -36,6 +36,7 @@ public class MyClass {
 
     }
 
+
     public static int getOffset(Bucket bucket, int index) {
         if (index < 0) {
             return -1; //anything below 0 won't work as diff will be undefined.

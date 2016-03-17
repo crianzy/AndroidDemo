@@ -39,9 +39,15 @@ public class ActivityB extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContxt(), ActivityC.class);
-                startActivity(intent);
+                startActivityForResult(intent, 100);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        LogUtil.d(TAG, "requestCode = " + requestCode + ", resultCode = " + resultCode);
     }
 
     public Context getContxt() {
