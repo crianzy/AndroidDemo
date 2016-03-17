@@ -21,6 +21,8 @@ import java.util.ArrayList;
 
 /**
  * Like a SparseArray, but with the ability to offset key ranges for bulk insertions/deletions.
+ *
+ * 这个类 没有用到
  */
 class PositionMap<E> implements Cloneable {
     private static final Object DELETED = new Object();

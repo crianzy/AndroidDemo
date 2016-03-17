@@ -28,6 +28,8 @@ import android.widget.LinearLayout;
  *
  * @see #createHorizontalHelper(android.support.v71.widget.RecyclerView.LayoutManager)
  * @see #createVerticalHelper(android.support.v71.widget.RecyclerView.LayoutManager)
+ *
+ * 方向辅助类
  */
 public abstract class OrientationHelper {
 

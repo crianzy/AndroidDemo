@@ -17,25 +17,25 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                LogUtil.e(TAG, "postDelayed run 3000 ");
-                Intent intent = new Intent(getApplicationContext(), ActivityB.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
-        }, 3000);
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                LogUtil.e(TAG, "postDelayed run 10000");
-                Intent intent = new Intent(getApplicationContext(), ActivityB.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
-        }, 10000);
+//        mHandler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                LogUtil.e(TAG, "postDelayed run 3000 ");
+//                Intent intent = new Intent(getApplicationContext(), ActivityB.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//            }
+//        }, 3000);
+//        mHandler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                LogUtil.e(TAG, "postDelayed run 10000");
+//                Intent intent = new Intent(getApplicationContext(), ActivityB.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//            }
+//        }, 10000);
     }
 }

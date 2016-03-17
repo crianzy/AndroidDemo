@@ -1,3 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns1="http://schemas.android.com/tools">
     <string name="app_name">common_util</string>
+    <string name="fileSizeSuffix"><ns1:g example="123" id="number">%1$s</ns1:g><ns1:g example="KB" id="unit">%2$s</ns1:g></string>
 </resources>

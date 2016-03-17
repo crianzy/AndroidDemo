@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+    <employee>
+        <name>ddviplinux</name>
+        <sex>m</sex>
+        <age>30</age>
+    </employee>
+    <employee>
+        <name>ddviplinux2</name>
+        <sex>m2</sex>
+        <age>302</age>
+    </employee>
+</employees>
