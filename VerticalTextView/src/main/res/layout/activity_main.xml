@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.czy.verticaltextview.MainActivity">
+
+
+    <com.czy.verticaltextview.TextViewWrap
+        android:id="@+id/txt_wrap_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
+
+
+    <TextView
+
+
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:ems="1"
+        android:text="在应用开发中，大家会遇到一个问题，"
+
+        />
+
+    <Button android:id="@+id/show_btn" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="show"
+        />
+
+    <Button android:id="@+id/hidden_btn" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hidden"/>
+</LinearLayout>

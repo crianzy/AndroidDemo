@@ -5,6 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
+        applicationId "com.czy.recyclesourcecode"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -16,6 +17,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java']
+        }
+    }
+
+
 }
 
 dependencies {

@@ -2,7 +2,7 @@
 package com.imczy.aidldemo;
 
 // Declare any non-default types here with import statements
-
+import com.imczy.aidldemo.Book;
 interface IMyAidlInterface {
     /**
      * Demonstrates some basic types that you can use as parameters
@@ -12,4 +12,8 @@ interface IMyAidlInterface {
             double aDouble, String aString);
 
     int getPid();
+
+    void addBook(in Book book);
+
+    void waitToReady();
 }

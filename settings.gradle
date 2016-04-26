@@ -1,4 +1,4 @@
-include ':app', ':AndroidHttpServer1', ':DrawerLayout', ':OpenGlGloble', ':ZxingDemo', ':XmlDemo', ':BitmapDemo', ':IntentServiceDemo',
+include ':app', ':AndroidHttpServer1', ':DrawerLayout', ':OpenGlGloble', ':ZxingDemo', ':XmlDemo', ':BitmapDemo', ':IntentServiceDemo', ':Notification', ':VerticalTextView', ':CardFlip', ':RecycleSourceCode2', ':StickScrollRecycleView', ':IntentFlag',
 //        ':expandlistview',
 //        ':ThemeDemo',
 //        ':DexDemo',
@@ -40,11 +40,11 @@ include ':app', ':AndroidHttpServer1', ':DrawerLayout', ':OpenGlGloble', ':Zxing
 //        ':RectLayout',
         ':ProgressBar',
 //        ':ApkAdDemo',
-//        ':aidldemo',
-        ':common_util'
+        ':aidldemo',
+        ':common_util',
 //        ':FragmentTextureVideoDemo',
 //        ':OpenGLDemo',
-//        ':BindStartService',
+        ':BindStartService',
 //        ':AnimatorDemo',
 //        ':p2pDemo',
 //        ':scoller',
@@ -52,7 +52,7 @@ include ':app', ':AndroidHttpServer1', ':DrawerLayout', ':OpenGlGloble', ':Zxing
 //        ':TouchEventDemo',
 //        ':server'
 //        ':TouchEventClickScrollDemo',
-//        ':ActivityModel'
+        ':ActivityModel',
 //        ':OrientationDemo',
 //        ':softkeyborddemo',
 //        ':ViewMeasureLayoutDrawDemo',
@@ -68,7 +68,7 @@ include ':app', ':AndroidHttpServer1', ':DrawerLayout', ':OpenGlGloble', ':Zxing
 //        ':testxfermode',
 //        ':StudyCanvas',
 //        ':wavedemo',
-//':ViewPagerDemo'
+        ':ViewPagerDemo'
 //        ':ListDemo',
 //        ':datebasedemo',
 //        ':NestedScrolling'

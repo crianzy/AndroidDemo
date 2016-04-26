@@ -4,6 +4,14 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            java.srcDirs = ['src/main/java', 'src/main/aidl', 'src/main/amazonaws', 'src/main/gcm', 'src/main/videorecorder', '.apt_generated']
+            aidl.srcDirs = ['src/main/aidl', '.apt_generated']
+        }
+    }
+
     defaultConfig {
         applicationId "com.imczy.aidldemo"
         minSdkVersion 15

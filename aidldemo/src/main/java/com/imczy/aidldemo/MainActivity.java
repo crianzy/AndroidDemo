@@ -9,8 +9,7 @@ import android.widget.TextView;
 
 import com.imczy.common_util.log.LogUtil;
 
-import org.w3c.dom.Text;
-
+import com.imczy.aidldemo.Book;
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
 

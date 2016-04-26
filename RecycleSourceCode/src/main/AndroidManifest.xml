@@ -9,7 +9,7 @@
         >
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.czy.recyclesourcecode.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
