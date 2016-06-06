@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0e0e0e</color>
+    <color name="colorPrimaryDark">#0e0e0e</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_20_alpha">#33ffffff</color>
+    <color name="white_35_alpha">#59ffffff</color>
+    <color name="white_60_alpha">#99ffffff</color>
+    <color name="white_90_alpha">#e6ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black_15_alpha">#26000000</color>
+    <color name="black_35_alpha">#59000000</color>
+    <color name="black_40_alpha">#66000000</color>
+    <color name="black_60_alpha">#99000000</color>
+    <color name="black_75_alpha">#bf000000</color>
+    <color name="black_80_alpha">#cc000000</color>
+    <color name="black_85_alpha">#d9000000</color>
+    <color name="black_90_alpha">#e6000000</color>
+    <color name="green">#1eb065</color>
+    <color name="green_45_alpha">#731eb065</color>
+    <color name="green_60_alpha">#991eb065</color>
+    <color name="green_80_alpha">#cc1eb065</color>
+    <color name="green_90_alpha">#e61eb065</color>
+    <color name="gray">#1b1b1b</color>
+
+    <color name="action_bar_black_color">#0e0e0e</color>
+    <color name="common_active_white_bg_color">#f7f7f7</color>
+    <color name="loading_view_bg_color">#eeeeee</color>
+
+    <!-- temp color-->
+    <color name="temp_gray">#ebebeb</color>
+
+    <!-- main tab title-->
+    <color name="main_tab_title_normal">#666666</color>
+    <color name="main_tab_title_selected">#000000</color>
+
+    <!-- MainActivity -->
+    <color name="main_action_bar_bg_color">@color/black</color>
+    <color name="main_status_bar_bg_color">@color/black</color>
+
+    <!-- DesignerFragment -->
+    <color name="designer_list_item_bg_color">#1F1F1F</color>
+    <color name="designer_item_name_color">@color/white_60_alpha</color>
+    <color name="designer_item_label_color">@color/white_35_alpha</color>
+    <color name="designer_item_concept_color">@color/white_35_alpha</color>
+    <color name="designer_item_focus_color">@color/green</color>
+
+    <!-- DesignerDetailActivity -->
+    <color name="designer_tab_bg_color">#1e1e1e</color>
+    <color name="designer_product_item_bg_color">#0e0e0e</color>
+
+    <!-- MineCollectionsActivity -->
+    <color name="collection_list_item_bg">#f7f7f7</color>
+
+</resources>
