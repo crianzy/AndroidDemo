@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<andoridhost.imczy.com.transz.MyViewGroup
+    android:id="@+id/rv"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="andoridhost.imczy.com.transz.MainActivity">
+
+    <!--<andoridhost.imczy.com.transz.MyFrameView-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:background="#fff"-->
+        <!--android:text="Hello World!"-->
+        <!--android:translationZ="10dp"/>-->
+
+    <!--<andoridhost.imczy.com.transz.MyFrameView-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:background="#fff"-->
+        <!--android:text="Hello World!"-->
+        <!--android:translationX="30dp"-->
+        <!--android:translationY="30dp"-->
+        <!--android:translationZ="20dp"/>-->
+</andoridhost.imczy.com.transz.MyViewGroup>

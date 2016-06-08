@@ -9,55 +9,21 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/AIDL_Demo" />
-            <option value="$PROJECT_DIR$/ActivityModel" />
-            <option value="$PROJECT_DIR$/AndroidHttpServer1" />
-            <option value="$PROJECT_DIR$/BindStartService" />
-            <option value="$PROJECT_DIR$/BitmapDemo" />
-            <option value="$PROJECT_DIR$/CardFlip" />
-            <option value="$PROJECT_DIR$/DrawerLayout" />
-            <option value="$PROJECT_DIR$/IntentFlag" />
-            <option value="$PROJECT_DIR$/IntentServiceDemo" />
-            <option value="$PROJECT_DIR$/NetTransformDemo" />
-            <option value="$PROJECT_DIR$/Notification" />
-            <option value="$PROJECT_DIR$/OpenGlGloble" />
-            <option value="$PROJECT_DIR$/ProgressBar" />
-            <option value="$PROJECT_DIR$/RecycleSourceCode2" />
-            <option value="$PROJECT_DIR$/StickScrollRecycleView" />
-            <option value="$PROJECT_DIR$/VerticalTextView" />
-            <option value="$PROJECT_DIR$/ViewPagerDemo" />
-            <option value="$PROJECT_DIR$/XmlDemo" />
-            <option value="$PROJECT_DIR$/ZxingDemo" />
-            <option value="$PROJECT_DIR$/aidldemo" />
+            <option value="$PROJECT_DIR$/ActivityMaterial" />
+            <option value="$PROJECT_DIR$/ChangeBoundsDemo" />
+            <option value="$PROJECT_DIR$/PathMove" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/common_util" />
+            <option value="$PROJECT_DIR$/clipdemo" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/AIDL_Demo" />
-            <option value="$PROJECT_DIR$/ActivityModel" />
-            <option value="$PROJECT_DIR$/AndroidHttpServer1" />
-            <option value="$PROJECT_DIR$/BindStartService" />
-            <option value="$PROJECT_DIR$/BitmapDemo" />
-            <option value="$PROJECT_DIR$/CardFlip" />
-            <option value="$PROJECT_DIR$/DrawerLayout" />
-            <option value="$PROJECT_DIR$/IntentFlag" />
-            <option value="$PROJECT_DIR$/IntentServiceDemo" />
-            <option value="$PROJECT_DIR$/NetTransformDemo" />
-            <option value="$PROJECT_DIR$/Notification" />
-            <option value="$PROJECT_DIR$/OpenGlGloble" />
-            <option value="$PROJECT_DIR$/ProgressBar" />
-            <option value="$PROJECT_DIR$/RecycleSourceCode2" />
-            <option value="$PROJECT_DIR$/StickScrollRecycleView" />
-            <option value="$PROJECT_DIR$/VerticalTextView" />
-            <option value="$PROJECT_DIR$/ViewPagerDemo" />
-            <option value="$PROJECT_DIR$/XmlDemo" />
-            <option value="$PROJECT_DIR$/ZxingDemo" />
-            <option value="$PROJECT_DIR$/aidldemo" />
+            <option value="$PROJECT_DIR$/ActivityMaterial" />
+            <option value="$PROJECT_DIR$/ChangeBoundsDemo" />
+            <option value="$PROJECT_DIR$/PathMove" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/common_util" />
+            <option value="$PROJECT_DIR$/clipdemo" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -2,6 +2,7 @@ package andoridhost.imczy.com.activitymaterial.custom;
 
 import android.animation.Animator;
 import android.animation.TimeInterpolator;
+import android.graphics.Rect;
 import android.transition.Transition;
 import android.transition.TransitionValues;
 import android.util.ArrayMap;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**
@@ -72,7 +74,6 @@ public class MyRevealTransition extends Transition {
     private Animator createAnimator(View view, float startRadius, float endRadius) {
         int centerX = view.getWidth() / 2;
         int centerY = view.getHeight() / 2;
-
         Animator reveal = ViewAnimationUtils.createCircularReveal(view, centerX, centerY,
                 startRadius, endRadius);
         return new NoPauseAnimator(reveal);

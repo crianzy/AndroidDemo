@@ -176,7 +176,6 @@ public class ChangePosition extends Transition {
 
         @Override
         public void set(View view, PointF topLeft) {
-            Log.d(TAG, "set() called with: " + "view = [" + view + "], topLeft = [" + topLeft + "]");
 
             int x = Math.round(topLeft.x);
             int y = Math.round(topLeft.y);
@@ -186,6 +185,8 @@ public class ChangePosition extends Transition {
 
             int transY = y - startY;
             int transX = x - startX;
+
+            Log.e(TAG, "set: transY = " + transY + " , transX = " + transX);
 
             view.setTranslationX(transX);
             view.setTranslationY(transY);

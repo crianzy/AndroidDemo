@@ -1,22 +1,20 @@
 package andoridhost.imczy.com.activitymaterial;
 
 import android.os.Bundle;
-import android.support.v4.app.SharedElementCallback;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionSet;
+import android.util.Log;
 import android.view.View;
-
-import java.util.List;
-import java.util.Map;
 
 import andoridhost.imczy.com.activitymaterial.common.CommentEnterTransition;
 import andoridhost.imczy.com.activitymaterial.common.CommentReturnTransition;
 import andoridhost.imczy.com.activitymaterial.custom.ChangeColor;
 import andoridhost.imczy.com.activitymaterial.custom.ChangePosition;
+import andoridhost.imczy.com.activitymaterial.custom.MyReturnRevealTransition;
 import andoridhost.imczy.com.activitymaterial.custom.MyRevealTransition;
+import andoridhost.imczy.com.activitymaterial.custom.ReturnChangePosition;
 
 /**
  * Created by chenzhiyong on 16/6/6.
@@ -28,7 +26,7 @@ public class CommentActivity extends AppCompatActivity {
 
     View bottomSendView;
     View topBarView;
-    View CommentBox;
+    View commentBox;
 
 
     @Override
@@ -38,11 +36,13 @@ public class CommentActivity extends AppCompatActivity {
 
         bottomSendView = findViewById(R.id.bottom_send_bar);
         topBarView = findViewById(R.id.txt_title_bar);
-        CommentBox = findViewById(R.id.comment_box);
+        commentBox = findViewById(R.id.comment_box);
 
         getWindow().setEnterTransition(new CommentEnterTransition(this, topBarView, bottomSendView));
         getWindow().setReturnTransition(new CommentReturnTransition(this, topBarView, bottomSendView));
 
+
+        commentBox.setClipToOutline(true);
 
         TransitionSet allSet = new TransitionSet();
 
@@ -50,9 +50,10 @@ public class CommentActivity extends AppCompatActivity {
         changePos.setDuration(300);
         changePos.addTarget(R.id.comment_box);
         allSet.addTransition(changePos);
-
-        Transition revealTransition = new MyRevealTransition(CommentBox);
+//
+        Transition revealTransition = new MyRevealTransition(commentBox);
         allSet.addTransition(revealTransition);
+        revealTransition.addTarget(R.id.comment_box);
         revealTransition.setInterpolator(new FastOutSlowInInterpolator());
         revealTransition.setDuration(300);
 
@@ -61,29 +62,67 @@ public class CommentActivity extends AppCompatActivity {
         changeColor.setDuration(350);
 
         allSet.addTransition(changeColor);
+//        allSet.addTransition(new ChangeBounds());
+
+        allSet.setDuration(300);
 
 
         getWindow().setSharedElementEnterTransition(allSet);
 
+        getWindow().setSharedElementsUseOverlay(true);
+        getWindow().setSharedElementReturnTransition(buildReturnSet());
 
-        setEnterSharedElementCallback(new SharedElementCallback() {
+
+    }
+
+    private TransitionSet buildReturnSet() {
+        TransitionSet firstSet = new TransitionSet();
+
+        Transition changePos = new ReturnChangePosition();
+        changePos.addTarget(R.id.comment_box);
+        firstSet.addTransition(changePos);
+
+
+        ChangeColor changeColor = new ChangeColor(getResources().getColor(R.color.white), getResources().getColor(R.color.black_85_alpha));
+        changeColor.addTarget(R.id.comment_box);
+        firstSet.addTransition(changeColor);
+
+
+        Transition revealTransition = new MyReturnRevealTransition(commentBox);
+        revealTransition.addTarget(R.id.comment_box);
+        firstSet.addTransition(revealTransition);
+
+        firstSet.setDuration(300);
+
+        firstSet.addListener(new Transition.TransitionListener() {
             @Override
-            public void onSharedElementStart(List<String> sharedElementNames, List<View> sharedElements, List<View> sharedElementSnapshots) {
-                super.onSharedElementStart(sharedElementNames, sharedElements, sharedElementSnapshots);
-                findViewById(R.id.comment_box).setVisibility(View.INVISIBLE);
+            public void onTransitionStart(Transition transition) {
+
             }
 
             @Override
-            public void onSharedElementEnd(List<String> sharedElementNames, List<View> sharedElements, List<View> sharedElementSnapshots) {
-                super.onSharedElementEnd(sharedElementNames, sharedElements, sharedElementSnapshots);
-                findViewById(R.id.comment_box).setVisibility(View.VISIBLE);
+            public void onTransitionEnd(Transition transition) {
+                Log.e(TAG, "onTransitionEnd: ");
+                commentBox.setVisibility(View.GONE);
             }
 
             @Override
-            public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
-                super.onMapSharedElements(names, sharedElements);
-                findViewById(R.id.comment_box).setVisibility(View.INVISIBLE);
+            public void onTransitionCancel(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionPause(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionResume(Transition transition) {
+
             }
         });
+
+
+        return firstSet;
     }
 }

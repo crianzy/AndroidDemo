@@ -46,10 +46,16 @@ public class ViewPagerAdapter1 extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View item = mLayoutInflater.inflate(R.layout.item_1, container, false);
         ImageView imageView = (ImageView) item.findViewById(R.id.img);
-        int resId = ResUtil.getInstance(mContext).drawableId("p" + (position + 1));
+        ImageBox imgBox = (ImageBox) item.findViewById(R.id.wrap_img_box);
 
-        String path = IOUtil.getBaseLocalLocation(mContext) + File.separator + "Download" + File.separator + "p" + (position + 1) + ".jpg";
-        Bitmap bitmap = BitmapFactory.decodeFile(path);
+        if (position == 0) {
+            imgBox.setClean(true);
+            item.bringToFront();
+            item.setAlpha(0);
+        }
+
+        int resId = ResUtil.getInstance(mContext).drawableId("p" + (position + 1));
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), resId);
         imageView.setImageBitmap(bitmap);
         container.addView(item);
         return item;

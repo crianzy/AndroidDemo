@@ -7,14 +7,21 @@
     android:layout_gravity="center"
     >
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="wrap_content"
-        android:layout_height="160dp"
-        android:layout_centerVertical="true"
-        android:layout_centerInParent="true"
-        android:background="@drawable/p9"
-        android:scaleType="centerCrop"
-        />
+    <com.czy.viewpagerdemo.ImageBox
+        android:id="@+id/wrap_img_box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/p9"
+            android:scaleType="centerCrop"
+            />
+    </com.czy.viewpagerdemo.ImageBox>
+
 
 </RelativeLayout>
