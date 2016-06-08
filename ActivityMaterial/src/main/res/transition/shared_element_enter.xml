@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+               android:duration="1000">
+
+    <transitionSet android:transitionOrdering="sequential">
+
+        <transition
+            class="andoridhost.imczy.com.activitymaterial.RevealTransition"
+            android:transitionVisibilityMode="mode_in"
+            >
+
+            <targets>
+                <target android:targetId="@id/comment_box"/>
+                <target android:targetName="comment"/>
+            </targets>
+        </transition>
+
+
+
+    </transitionSet>
+</transitionSet>

@@ -19,6 +19,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="10dp"
+        android:transitionName="comment"
         android:layout_marginRight="80dp"
         android:background="@drawable/ic_bottom_comment_normal"
         />
