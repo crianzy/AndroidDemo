@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zuimeia.webviewheaderdemo.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/frame_web_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.zuimeia.webviewheaderdemo.ZmScrollView
+            android:id="@+id/viewObj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="#435456"
+                    android:gravity="center"
+                    android:text="header"/>
+
+                <com.zuimeia.webviewheaderdemo.MyWebView
+                    android:id="@+id/webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="#435456"
+                    android:gravity="center"
+                    android:text="footer"/>
+
+            </LinearLayout>
+            <!-- Webview and footer programatically added here -->
+        </com.zuimeia.webviewheaderdemo.ZmScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>

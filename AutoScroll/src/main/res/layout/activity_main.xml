@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.czy.autoscroll.MainActivity">
+
+
+    <com.czy.autoscroll.AutoHeightScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:maxHeight="50dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test"
+            />
+
+    </com.czy.autoscroll.AutoHeightScrollView>
+
+</RelativeLayout>

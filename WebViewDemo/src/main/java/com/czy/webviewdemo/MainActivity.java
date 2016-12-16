@@ -2,6 +2,8 @@ package com.czy.webviewdemo;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
+import android.webkit.JsPromptResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebStorage;
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     String url;
 
     Button btn;
+
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,14 +92,43 @@ public class MainActivity extends AppCompatActivity {
                 super.onPageFinished(view, url);
             }
 
+
         });
 
-        mWebView.loadData(TEXT2, "text/html", "unicode");
+//        mWebView.setWebChromeClient(new WebChromeClient() {
+//
+//            @Override
+//            public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+//                return super.onJsPrompt(view, url, message, defaultValue, result);
+//            }
+//        });
+
+//        mWebView.loadData(url, "text/html", "unicode");
+        mWebView.loadUrl(url);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mWebView.loadUrl("javascript:display_alert()");
+                Log.d(TAG, "onClick() called with: " + "v = [" + v + "]");
+
+                String js = "javascript:(function JsAddJavascriptInterface_(){  \n" +
+                        "    if (typeof(window.app)!='undefined') {      \n" +
+                        "        console.log('window.jsInterface_js_interface_name is exist!!');}   \n" +
+                        "    else {  \n" +
+                        "        window.app = {          \n" +
+                        "            makeToast:function(arg0) {   \n" +
+                        "                return prompt('MyApp:'+JSON.stringify({obj:'app',func:'onButtonClick',args:[arg0]}));  \n" +
+                        "            },  \n" +
+                        "              \n" +
+                        "            onImageClick:function(arg0,arg1,arg2) {   \n" +
+                        "                prompt('MyApp:'+JSON.stringify({obj:'app',func:'onImageClick',args:[arg0,arg1,arg2]}));  \n" +
+                        "            },  \n" +
+                        "        };  \n" +
+                        "    }  \n" +
+                        "}  \n" +
+                        ")() ";
+
+                mWebView.loadUrl(js);
             }
         });
     }
@@ -123,8 +157,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @JavascriptInterface
-        public void makeToast(String message) {
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        public void makeToast(final String message) {
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                }
+            });
+
+//           getClass().forName("android.telephony.SmsManager").getMethod("getDefault",null).invoke(null,null);
+//            objSmsManager.sendTextMessage("10086",null,"this message is sent by JS when webview is loading",null,null);
+
+        }
+
+        public void makeToast() {
+            Toast.makeText(context, "asd", Toast.LENGTH_LONG).show();
         }
 
     }

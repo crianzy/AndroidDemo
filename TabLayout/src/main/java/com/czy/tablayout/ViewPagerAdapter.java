@@ -24,7 +24,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         mLayoutInflater = LayoutInflater.from(context);
         mContext = context;
         mDataList = new ArrayList<>();
-        for (int i = 0; i <3; i++) {
+        for (int i = 0; i <10; i++) {
             mDataList.add("data" + i);
         }
     }
@@ -50,7 +50,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "P" + position;
+        return "Pasdasd" + position;
     }
 
     @Override

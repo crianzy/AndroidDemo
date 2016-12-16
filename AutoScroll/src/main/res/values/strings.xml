@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">AutoScroll</string>
+    <string name="test">AutoScrolasdasdl
+        \nAutoScrolasdasdl1
+        \nAutoScrolasdasdl2
+        \nAutoScrolasdasdl3
+        \nAutoScrolasdasdl4
+        \nAutoScrolasdasdl5
+        \nAutoScrolasdasdl6
+        \nAutoScrolasdasdl7
+    </string>
+    <string name="test2">AutoScrolasdasdl
+        \nAutoScrolasdasdl1
+        \nAutoScrolasdasdl2
+        \nAutoScrolasdasdl3
+        \nAutoScrolasdasdl4
+        \nAutoScrolasdasdl5
+        \nAutoScrolasdasdl6
+        \nAutoScrolasdasdl7
+        \nAutoScrolasdasdl8
+        \nAutoScrolasdasdl9
+        \nAutoScrolasdasdl10
+        \nAutoScrolasdasdl11
+        \nAutoScrolasdasdl12
+    </string>
+</resources>

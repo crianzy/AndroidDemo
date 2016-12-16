@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ActivityMaterial/ActivityMaterial.iml" filepath="$PROJECT_DIR$/ActivityMaterial/ActivityMaterial.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidDemo.iml" filepath="$PROJECT_DIR$/AndroidDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ChangeBoundsDemo/ChangeBoundsDemo.iml" filepath="$PROJECT_DIR$/ChangeBoundsDemo/ChangeBoundsDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PathMove/PathMove.iml" filepath="$PROJECT_DIR$/PathMove/PathMove.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/clipdemo/clipdemo.iml" filepath="$PROJECT_DIR$/clipdemo/clipdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_util/common_util.iml" filepath="$PROJECT_DIR$/common_util/common_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/overscrollanimdemo/overscrollanimdemo.iml" filepath="$PROJECT_DIR$/overscrollanimdemo/overscrollanimdemo.iml" />
     </modules>
   </component>
 </project>

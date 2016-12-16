@@ -42,6 +42,15 @@ public class Process2Activity extends Activity {
 				if (mIMyAidlInterface == null) {
 					return;
 				}
+
+				Log.e(TAG, "onClick: waitToReady start");
+				try {
+					mIMyAidlInterface.waitToReady();
+				} catch (RemoteException e) {
+					e.printStackTrace();
+				}
+				Log.e(TAG, "onClick: waitToReady end");
+
 				new Thread(new Runnable() {
 					@Override
 					public void run() {

@@ -15,5 +15,7 @@ interface IMyAidlInterface {
 
     void addBook(in Book book);
 
+    Book getBook();
+
     void waitToReady();
 }

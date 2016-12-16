@@ -8,22 +8,27 @@
     android:weightSum="1"
     tools:context=".MainActivity">
 
-    <ProgressBar
-        android:id="@+id/pb_progressbar"
-        style="@style/StyleProgressBarMini"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:max="100"
+    <!--<ProgressBar-->
+    <!--android:id="@+id/pb_progressbar"-->
+    <!--style="@style/StyleProgressBarMini"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="30dp"-->
+    <!--android:max="100"-->
 
-        />
+    <!--/>-->
+
+    <com.imczy.progressbar.PoogressView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLargeInverse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:indeterminateDrawable="@drawable/loading_animd"
+        android:padding="20dp"/>
 
     <ProgressBar
         android:id="@+id/progressBar2"

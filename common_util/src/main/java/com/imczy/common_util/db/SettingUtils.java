@@ -34,4 +34,8 @@ public class SettingUtils {
             return UUID.fromString(uuidStr);
         }
     }
+
+    public static String getDanmukuUuidString() {
+        return mLocalHelper.getPref(DANMUKU_UUDI, "");
+    }
 }

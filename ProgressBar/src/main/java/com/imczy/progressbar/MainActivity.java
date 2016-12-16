@@ -19,20 +19,20 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		mProgressbar = (ProgressBar) findViewById(R.id.pb_progressbar);
-		Log.e(TAG, "onCreate: " + getFilesDir().getPath());
-//        mHandler.postDelayed(new Runnable() {
-//            @Override`
-//            public void run() {
-//                mProgressbar.setProgress(20);
-//            }
-//        }, 3000);
-
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				mProgressbar.setProgress(90);
-			}
-		}).start();
+//		mProgressbar = (ProgressBar) findViewById(R.id.pb_progressbar);
+//		Log.e(TAG, "onCreate: " + getFilesDir().getPath());
+////        mHandler.postDelayed(new Runnable() {
+////            @Override`
+////            public void run() {
+////                mProgressbar.setProgress(20);
+////            }
+////        }, 3000);
+//
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				mProgressbar.setProgress(90);
+//			}
+//		}).start();
 	}
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="czy.com.overscrollanimdemo.MainActivity">
+
+    <czy.com.overscrollanimdemo.MyScrollView3
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="120dp"
+        android:overScrollMode="never">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="4dp"/>
+
+            <View
+                android:id="@+id/card_1"
+                android:layout_width="150dp"
+                android:layout_height="167dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="-80dp"
+                android:layout_toRightOf="@+id/recycle_view"
+                android:background="#8DCBCF"
+                android:elevation="3dp"/>
+
+            <View
+                android:id="@+id/card_2"
+                android:layout_width="150dp"
+                android:layout_height="155dp"
+                android:layout_alignLeft="@+id/card_1"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="26dp"
+                android:background="#6BA1C6"
+                android:elevation="2dp"/>
+
+            <View
+                android:id="@+id/card_3"
+                android:layout_width="144dp"
+                android:layout_height="143dp"
+                android:layout_alignLeft="@+id/card_1"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="40dp"
+                android:background="#7E89CB"
+                />
+        </RelativeLayout>
+    </czy.com.overscrollanimdemo.MyScrollView3>
+
+</RelativeLayout>

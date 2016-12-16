@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.dodola.rocoofix'
+
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "com.czy.hotfixdemo"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 5
+        versionName "5.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../keystore/zui.keystore')
+            storePassword 'ourbri321'
+            keyAlias 'bri.keystore'
+            keyPassword 'ourbri321'
+        }
+    }
+
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('release.apk')) {
+                        def timeStamp = new Date().format('MM_dd_HH_mm');
+                        def fileName = "ZUIWorld_hot_fix_v${defaultConfig.versionName}" + "_" + timeStamp + ".apk";
+                        output.outputFile = file("${outputFile.parent}/${fileName}")
+                    }
+                }
+            }
+        }
+        debug {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+rocoo_fix {
+    includePackage = ['com/czy/hotfixdemo']//指定将来可能需要制作补丁的package(就是指定插庄的范围)
+    excludeClass = []//将不需要加到patch里的类写在这里(不需要插庄的类)
+
+    preVersionPath = '4'//注意：此项属性只在需要制作补丁的时候才需开启！！如果不需要制作补丁则需要去掉此项
+
+    enable = true//注意：关掉此项会无法生成Hash.txt文件
+
+    scanref = true//默认为 false，开启这个选项会将与补丁 class 相引用的 class 都打入包中来解决 ART 虚拟机崩溃问题，功能 Beta 中
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.dodola:rocoo:1.1'
+    compile project(':common_util')
+}
